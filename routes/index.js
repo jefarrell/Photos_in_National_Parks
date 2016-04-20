@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+var secrets = require('../secrets');
 
 var test = require('../models/model.js');
 
@@ -12,6 +13,13 @@ router.get('/test', function(req, res) {
 	}
 	res.json(info);
 });
+
+
+router.get('/mapauth', function(req, res) {
+	res.send(secrets);
+	//res.send("HI!");
+});
+
 
 // Just checking the DB works
 router.post('/api/create/:nameval/:valval', function(req, res){
@@ -33,7 +41,7 @@ router.post('/api/create/:nameval/:valval', function(req, res){
 			return res.json(error);
 		}
 
-		console.log('saved !', data);
+		console.log('saved! ', data);
 
 		var jsonData = {
 			status: 'OK',

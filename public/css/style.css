@@ -15,10 +15,10 @@ body {
 	/*border: white solid 2px;*/
 	background-color: black;
 	font-family: "Times New Roman", serif;
-	/*height:20%;*/
 	font-size:5em;
 }
 
+/* DEBUG */
 div {
 	outline:#7AC043 solid 1px;
 }
@@ -28,8 +28,8 @@ div {
 	display:inline;
 	float:left;
 	padding: 2%;
-	/*background-color: red;*/
 	vertical-align: middle;
+	/*background-color: red;*/
 }
 
 #arrowhead {
@@ -38,27 +38,43 @@ div {
 	max-width: 100%;
 	height:auto;
 	width:15%;
-	/*vertical-align: middle;*/
 	/*background-color: white;*/
-}
-
-#mediabox {
-	height:auto;
-	display:inline;
-}
-
-#form {
-	background-color: gray;
-	font-size: 25px;
-}
-
-#btn {
-	background-color: #7AC043;
-	font-size: 16px;
 }
 
 #intro {
 	padding-top: 10px;
 	font-size: 1.5em;
 	color:black;
+}
+
+/* keep rows the same height */
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+  flex-wrap: wrap;
+}
+
+.btn-group {
+	outline:none;
+}
+
+#buttonContainer {
+	padding:2% 0 2% 0;
+	outline:none;
+}
+
+#mapContainer {
+	background-color: gray;
+	font-size: 25px;
+}
+
+#infoContainer {
+	background-color: #7AC043;
+	font-size: 16px;
+}
+
+#map {
+	height:480px;
 }

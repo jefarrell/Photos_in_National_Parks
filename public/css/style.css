@@ -1,0 +1,64 @@
+body {
+	background-color: #33440D;
+	color: white;
+	text-align: center;
+  	font-family: "myriad-pro";
+  	font-style: bold;
+}
+
+#frame {
+	background-color: white;
+	/*border: white solid 2px;*/
+}
+
+#headerrow {
+	/*border: white solid 2px;*/
+	background-color: black;
+	font-family: "Times New Roman", serif;
+	/*height:20%;*/
+	font-size:5em;
+}
+
+div {
+	outline:#7AC043 solid 1px;
+}
+
+#title {
+	text-align: left;
+	display:inline;
+	float:left;
+	padding: 2%;
+	/*background-color: red;*/
+	vertical-align: middle;
+}
+
+#arrowhead {
+	float: right;
+	margin: 2% 2% 2% 0;
+	max-width: 100%;
+	height:auto;
+	width:15%;
+	/*vertical-align: middle;*/
+	/*background-color: white;*/
+}
+
+#mediabox {
+	height:auto;
+	display:inline;
+}
+
+#form {
+	background-color: gray;
+	font-size: 25px;
+}
+
+#btn {
+	background-color: #7AC043;
+	font-size: 16px;
+}
+
+#intro {
+	padding-top: 10px;
+	font-size: 1.5em;
+	color:black;
+}

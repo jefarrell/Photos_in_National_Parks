@@ -17,7 +17,6 @@ router.get('/test', function(req, res) {
 
 router.get('/mapauth', function(req, res) {
 	res.send(secrets);
-	//res.send("HI!");
 });
 
 

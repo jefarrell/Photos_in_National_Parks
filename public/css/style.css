@@ -1,7 +1,6 @@
 body {
 	background-color: #3C5F36;
 	color: white;
-	text-align: center;
   	font-family: "myriad-pro";
   	font-weight: lighter;
 }
@@ -43,13 +42,19 @@ div {
 }
 
 #intro {
-	padding-top: 10px;
-	font-size: 1.5em;
-	color: #FFF;
 	background-image: url("../imgs/glacier.jpg");
-	background-size: 100%;
-	background-repeat: none;
+	background-size: cover;
 	position: relative;
+/*	-webkit-filter: blur(3px);
+	filter: blur(3px);*/
+}
+
+#content {
+	text-align: center;
+	padding-top: 10px;
+	font-size: 1.3em;
+	color: #FFF;
+	z-index: 99;
 }
 
 #overlay {
@@ -75,20 +80,73 @@ div {
 	outline:none;
 }
 
+/*--- Thanks Bass Jobsen on S.O. for this boostrap v4 fix */
+.btn-group-justified {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate; 
+}
+.btn-group-justified .btn,
+.btn-group-justified .btn-group {
+    float: none;
+    display: table-cell;
+    width: 1%; }
+.btn-group-justified .btn .btn,
+.btn-group-justified .btn-group .btn {
+      width: 100%; 
+}
+.btn-group-justified .btn .dropdown-menu,
+.btn-group-justified .btn-group .dropdown-menu {
+      left: auto; 
+ }
+/*   ---*/
+
+.btn {
+	border-radius: 0px;
+	outline:2px solid white;
+	color:#FFF;
+	background-color:#000;
+	/*margin:1px;*/
+}
+
+.btn:hover {
+	background-color: #7AC043;
+	box-shadow: none;
+	outline:2px solid white;
+}
+
+.btn:active {
+	background-color: #7AC043;
+	box-shadow: none;
+	outline:2px solid #7AC043;
+} 
+
+.btn:focus {
+	background-color: #7AC043;
+	outline:2px solid white;
+	box-shadow:none;
+}
+
 #buttonContainer {
-	padding:2% 0 2% 0;
+	padding:2px 0 2px 0;
 	outline:none;
+	margin-left:-15px;
+	margin-right:-15px;
 }
 
 #mapContainer {
 	/*background-color: gray;*/
 	font-size: 25px;
+	padding-left:0px;
+	padding-right:0.5%;
+	/*border: #3C5F36 solid 3px;*/
 }
 
 #infoContainer {
-	background-color: #7AC043;
+	background-color: #C77F49;
 	font-size: 16px;
-	border: white solid 3px;
+	/*border: #3C5F36 solid 3px;*/
 }
 
 /* Need some media queries to resize */
@@ -97,7 +155,21 @@ div {
 	width:auto;
 /*	margin-left: -15px;
 	margin-right: -15px;*/  /* Will want this if I change bg color */
-	border: white solid 3px;
+	/*border: #3C5F36 solid 3px;*/
 }
 
+#footer {
+	background-color: #000;
+	margin-top: 0.5%;
+}
 
+.card {
+	margin-top: .9375rem;
+	border-radius: 0;
+	border: 0;
+}
+
+#card-header-image {
+	width:100%;
+	border-radius: 0;
+}

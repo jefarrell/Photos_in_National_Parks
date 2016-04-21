@@ -10,6 +10,7 @@ $(document).ready(function() {
 			accessToken: data.leafletToken
 		}).addTo(map);
 	});
+	map.scrollWheelZoom.disable();
 });
 
 

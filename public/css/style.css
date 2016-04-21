@@ -29,6 +29,7 @@ div {
 	float:left;
 	padding: 2%;
 	vertical-align: middle;
+	color: #FFF;
 	/*background-color: red;*/ /* DEBUG */
 }
 
@@ -104,28 +105,27 @@ div {
 
 .btn {
 	border-radius: 0px;
-	outline:2px solid white;
+	/*outline:2px solid white;*/
 	color:#FFF;
 	background-color:#000;
-	/*margin:1px;*/
 }
 
 .btn:hover {
 	background-color: #7AC043;
 	box-shadow: none;
-	outline:2px solid white;
+	/*outline:2px solid white;*/
 }
 
 .btn:active {
 	background-color: #7AC043;
 	box-shadow: none;
-	outline:2px solid #7AC043;
+	/*outline:2px solid #7AC043;*/
 } 
 
 .btn:focus {
 	background-color: #7AC043;
-	outline:2px solid white;
 	box-shadow:none;
+	/*outline:2px solid white;*/
 }
 
 #buttonContainer {
@@ -172,4 +172,31 @@ div {
 #card-header-image {
 	width:100%;
 	border-radius: 0;
+}
+
+#cardTitle {
+	text-align: center;
+	font-family: "Times New Roman", serif;
+	background-color: #000;
+	color:#FFF;
+	border-top:3px #FFF solid;
+	/*padding: 0 1rem 0 1rem;*/
+}
+
+
+.card-block {
+	padding: 0;
+}
+
+.cardAttrs {
+	padding-left: 0.9rem;
+	font-weight: bold;
+}
+
+.list-group-item {
+	color: #000;
+	padding-top: 2%;
+	padding: 0;
+	font-size: 1em;
+	border:none;
 }

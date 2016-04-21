@@ -1,13 +1,13 @@
 
 
 $(document).ready(function() {
-	var map = L.map('map').setView([38.8945571,-97.3677515], 5);
+	var map = L.map('map').setView([38.8945571,-97.3677515], 4);
 	$.get('/mapauth', function(data) {
-		L.tileLayer('https://api.tiles.mapbox.com/v4/'+data.leafletAccount+'/{z}/{x}/{y}.png?access_token='+ data.leafletToken, {
-    		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    		maxZoom: 18,
-    		id: data.leafletAccount,
-    		accessToken: data.leafletToken
+		var stamenLayer = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png', {
+			attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.',
+			minZoom: 4,
+			id: data.leafletAccount,
+			accessToken: data.leafletToken
 		}).addTo(map);
 	});
 });

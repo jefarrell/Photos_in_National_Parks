@@ -6,8 +6,8 @@ body {
 }
 
 #frame {
-	background-color: #FFFFFF;
-	border: white solid 2px;
+	background-color: #3C5F36;
+	/*border: white solid 2px;*/
 }
 
 #headerrow {
@@ -15,7 +15,7 @@ body {
 	background-color: #000000;
 	font-family: "Times New Roman", serif;
 	font-size:5em;
-	border-bottom: white solid 2px;
+	/*border-bottom: white solid 2px;*/
 }
 
 /* DEBUG */
@@ -30,6 +30,7 @@ div {
 	padding: 2%;
 	vertical-align: middle;
 	color: #FFF;
+	line-height: 110%;
 	/*background-color: red;*/ /* DEBUG */
 }
 
@@ -158,7 +159,7 @@ div {
 	/*border: #3C5F36 solid 3px;*/
 }
 
-#footer {
+#bottom {
 	background-color: #000;
 	margin-top: 0.5%;
 }
@@ -195,8 +196,13 @@ div {
 
 .list-group-item {
 	color: #000;
-	padding-top: 2%;
+	margin-top: 0.5rem;
 	padding: 0;
 	font-size: 1em;
 	border:none;
+}
+
+#footer {
+	margin-top:1%;
+	font-size: 0.8em;
 }

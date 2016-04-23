@@ -19,13 +19,7 @@ $(document).ready(function() {
 	map.scrollWheelZoom.disable();
 });
 
-// lat lon
-// // nw =  49.8096315636, -132.01171875
-// // se = 25.0855988971, -65.91796875
-// ne = 49.8096315636, -65.91796875
-// sw = 25.0855988971, -132.01171875
 /*
-
 $("#submit").click(function() {
 	var n = $("#namefield").val();
 	var v = $("#valfield").val();

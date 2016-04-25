@@ -17,6 +17,7 @@ $(document).ready(function() {
 		}).addTo(map);
 	});
 	map.scrollWheelZoom.disable();
+
 });
 
 /*

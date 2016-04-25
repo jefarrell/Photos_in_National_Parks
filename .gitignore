@@ -2,3 +2,4 @@
 /bower_components
 /data/db
 secrets.js
+*.DS_Store

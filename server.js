@@ -1,7 +1,6 @@
 var express = require('express');
 var path = require('path');
 var mongoose = require('mongoose');
-var mongodb = require('mongodb');
 
 var app = express();
 var server = app.listen(3000, function() {

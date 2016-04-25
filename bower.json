@@ -13,6 +13,8 @@
   ],
   "dependencies": {
     "jquery": "^2.2.3",
-    "bootstrap": "v4.0.0-alpha.2"
+    "bootstrap": "v4.0.0-alpha.2",
+    "react": "^15.0.1",
+    "babel": "*"
   }
 }

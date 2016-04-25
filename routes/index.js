@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var secrets = require('../secrets');
-
+var facts = require('../data/parkFacts.js');
 var test = require('../models/model.js');
 
 
@@ -68,5 +68,11 @@ router.get('/api/display', function(req, res) {
 	});
 });
 
+// Send facts from file for info card
+router.get('/info/:park', function(req, res) {
+	var park = req.params.park;
+	var details = facts[park].name;
+	res.json(details);
+});
 
 module.exports = router;

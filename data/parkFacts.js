@@ -1,33 +1,53 @@
 var facts = {
 	smokyMountains: {
-		name: "Great Smoky Mountains"
+		name: "Great Smoky Mountains",
+		url: '/imgs/cards/smokyMountains.jpg',
+		established: "1983"
 	},
 	grandCanyon: {
-		name: "Grand Canyon"
+		name: "Grand Canyon",
+		url: '/imgs/cards/grandCanyon.jpg',
+		established: "1979"
 	},
 	rockyMountain: {
-		name: "Rocky Mountain"
+		name: "Rocky Mountain",
+		url: '/imgs/cards/rockyMountain.jpg',
+		established: "1915"
 	},
 	yosemite: {
-		name: "Yosemite"
+		name: "Yosemite",
+		url: '/imgs/cards/yosemite.jpg',
+		established: "1984"
 	},
 	yellowstone:{
-		name: "Yellowstone"
+		name: "Yellowstone",
+		url: '/imgs/cards/yellowstone.jpg',
+		established: "1978"
 	},
 	zion: {
-		name: "Zion"
+		name: "Zion",
+		url: '/imgs/cards/zion.jpg',
+		established: "1919"
 	},
 	olympic: {
-		name: "Olympic"
+		name: "Olympic",
+		url: '/imgs/cards/olympic.jpg',
+		established: "1981"
 	},
 	grandTeton: {
-		name: "Grand Teton"
+		name: "Grand Teton",
+		url: '/imgs/cards/grandTeton.jpg',
+		established: "1929"
 	},
 	acadia: {
-		name: "Acadia"
+		name: "Acadia",
+		url: '/imgs/cards/acadia.jpg',
+		established: "1916"
 	},
 	glacier: {
-		name: "Glacier"
+		name: "Glacier",
+		url: '/imgs/cards/glacier.jpg',
+		established: "1910"
 	}
 };
 

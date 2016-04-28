@@ -44,7 +44,7 @@ div {
 }
 
 #intro {
-	background-image: url("../imgs/glacier.jpg");
+	background-image: url("../imgs/header.jpg");
 	background-size: cover;
 	position: relative;
 /*	-webkit-filter: blur(3px);
@@ -178,6 +178,7 @@ div {
 #cardTitle {
 	text-align: center;
 	font-family: "Times New Roman", serif;
+	font-style: italic;
 	background-color: #000;
 	color:#FFF;
 	border-top:3px #FFF solid;

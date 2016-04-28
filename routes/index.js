@@ -71,7 +71,7 @@ router.get('/api/display', function(req, res) {
 // Send facts from file for info card
 router.get('/info/:park', function(req, res) {
 	var park = req.params.park;
-	var details = facts[park].name;
+	var details = facts[park];
 	res.json(details);
 });
 

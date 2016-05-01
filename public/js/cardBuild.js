@@ -1,24 +1,26 @@
+
+
 var Buttons = React.createClass({
-	getInitialState: function() {
+	getInitialState: function () {
 		return {
 			isSelected: false
 		};
 	},
 
-	handleClick: function() {
+	handleClick: function () {
 		this.setState({
 			isSelected: true
 		});
 	},
 
-	render: function() {
+	render: function () {
 	    var isSelected = this.state.isSelected;
 		
 		if (isSelected) {
-			$.get('/info/'+this.props.name, function(data) {
+			$.get('/info/'+this.props.name, function (data) {
 				ReactDOM.render(<Card url={data.url} parkname={data.name} date={data.established} />, document.getElementById('infoContainer'));
+				ReactDOM.render(<Map parkLat={data.lat} parkLon={data.lon} parkZoom={10} />, document.getElementById('mapContainer'));			
 			});
-
 		}
 		return (
 		<div>
@@ -29,9 +31,10 @@ var Buttons = React.createClass({
 });
 
 
+
 var Card = React.createClass({
 
-	render: function() {
+	render: function () {
 		return (	
 			<div className={"card"}>
 				<img className={"card-img-top"} id="card-header-image" src={this.props.url} alt="card header image" />
@@ -53,37 +56,50 @@ var Card = React.createClass({
 
 
 var Map = React.createClass({displayName: "Map",
+	
+	getInitialState: function() {
+		return {
+			lat: this.props.parkLat,
+			lon: this.props.parkLon,
+			zoom: this.props.parkZoom
+		};
+
+	},
+
+	componentWillReceiveProps: function(nextProps) {
+
+		this.map.setView([nextProps.parkLat, nextProps.parkLon], nextProps.parkZoom);
+
+	},
 
     createMap: function (element) {
-
     	var southWest = L.latLng(25.0855988971, -132.01171875);
 	    var northEast = L.latLng(49.8096315636, -65.91796875);
         var bounds = L.latLngBounds(southWest, northEast);
 
-        var map = L.map(element, {
+        this.map = L.map(element, {
         	maxBounds: bounds,
         	minZoom: 4
-        }).setView([this.props.lat, this.props.lon], this.props.zoom);        ;
+        }).setView([this.state.lat, this.state.lon], this.state.zoom);
         L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-        map.scrollWheelZoom.disable()
+        }).addTo(this.map);
+        this.map.scrollWheelZoom.disable();
+        return this.map;
     },
 
-    componentDidMount: function () {
-    	
+    componentDidMount: function () {	
     	if (this.mapDiv !== null) {
-    		this.createMap(this.mapDiv);
+    		this.createMap(this.mapDiv)//.setView([this.state.lat, this.state.lon], this.state.startZoom);
     	};
+    	this.state.zoom=10;
     },
 
     render: function () {
-
     	var divstyle = {
     		height: 480,
     		width: "auto"
     	};
-
     	return (
     		<div className={"map"} style={divstyle} ref={(ref) => this.mapDiv = ref}></div>
     	)
@@ -92,8 +108,8 @@ var Map = React.createClass({displayName: "Map",
 
 
 
-ReactDOM.render(<Map lat={60.0} lon={10.0} zoom={4}/>, document.getElementById('mapContainer'));
 
+//ReactDOM.render(<Map startLat={38.8945571} startLon={-97.3677515} startZoom={4} />, document.getElementById('mapContainer'));
 
 
 

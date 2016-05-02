@@ -22,8 +22,9 @@ var Buttons = React.createClass({
 				ReactDOM.render(<Map parkLat={data.lat} parkLon={data.lon} parkZoom={10} />, document.getElementById('mapContainer'));			
 			});
 		}
+		
 		return (
-		<div>
+		 <div>
 			<button type="button"  onClick={this.handleClick} className={"btn btn-default"} name={this.props.id}>{this.props.display}</button>
 		</div>
 		)
@@ -35,6 +36,12 @@ var Buttons = React.createClass({
 var Card = React.createClass({
 
 	render: function () {
+		$('#infoContainer').css('background-color','#C77F49');
+/*		I shouldn't need this ^ but having issue
+		var cardStyle = {
+    		backgroundColor: '#C77F49'  
+    	};
+		style={cardStyle} */
 		return (	
 			<div className={"card"}>
 				<img className={"card-img-top"} id="card-header-image" src={this.props.url} alt="card header image" />
@@ -63,7 +70,6 @@ var Map = React.createClass({displayName: "Map",
 			lon: this.props.parkLon,
 			zoom: this.props.parkZoom
 		};
-
 	},
 
 	componentWillReceiveProps: function(nextProps) {
@@ -90,18 +96,19 @@ var Map = React.createClass({displayName: "Map",
 
     componentDidMount: function () {	
     	if (this.mapDiv !== null) {
-    		this.createMap(this.mapDiv)//.setView([this.state.lat, this.state.lon], this.state.startZoom);
+    		this.createMap(this.mapDiv);
     	};
     	this.state.zoom=10;
     },
 
     render: function () {
-    	var divstyle = {
+
+    	var divStyle = {
     		height: 480,
     		width: "auto"
     	};
     	return (
-    		<div className={"map"} style={divstyle} ref={(ref) => this.mapDiv = ref}></div>
+    		<div className={"map"} style={divStyle} ref={(ref) => this.mapDiv = ref}></div>
     	)
     }
 });

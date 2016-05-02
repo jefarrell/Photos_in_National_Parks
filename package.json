@@ -9,7 +9,23 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "browserify": "^13.0.0",
     "express": "^4.13.4",
-    "mongoose": "^4.4.12"
+    "gulp": "^3.9.1",
+    "mongoose": "^4.4.12",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "gulp": "^3.9.1",
+    "gulp-html-replace": "^1.5.5",
+    "gulp-streamify": "^1.0.2",
+    "gulp-uglify": "^1.5.3",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
   }
 }

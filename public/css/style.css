@@ -106,27 +106,15 @@ div {
 
 .btn {
 	border-radius: 0px;
-	/*outline:2px solid white;*/
+	outline: none;
 	color:#FFF;
 	background-color:#000;
 }
 
-.btn:hover {
-	background-color: #7AC043;
-	box-shadow: none;
-	/*outline:2px solid white;*/
-}
-
-.btn:active {
-	background-color: #7AC043;
-	box-shadow: none;
-	/*outline:2px solid #7AC043;*/
-} 
-
-.btn:focus {
+.btn:hover, .btn:active, .btn:focus {
 	background-color: #7AC043;
 	box-shadow:none;
-	/*outline:2px solid white;*/
+	outline: none;
 }
 
 #buttonContainer {
@@ -145,7 +133,7 @@ div {
 }
 
 #infoContainer {
-	background-color: #C77F49;
+	/*background-color: #C77F49;*/
 	font-size: 16px;
 	/*border: #3C5F36 solid 3px;*/
 }

@@ -15,7 +15,8 @@ var path = {
 	DEST: 'dist',
 	DEST_SRC: 'dist/src',
 	DEST_BUILD: 'dist/build',
-	ENTRY_POINT: 'public/js/cardBuild.jsx'
+	ENTRY_POINT: 'public/js'
+	// ENTRY_POINT: 'public/js/cardBuild.jsx'
 
 };
 
@@ -40,7 +41,7 @@ gulp.task('watch', function() {
 		watcher.bundle()
 			.pipe(source(path.OUT))
 			.pipe(gulp.dest(path.DEST_SRC))
-			console.log("Gulp updated");
+			console.log(" ~ Gulp updated ~ ");
 	})
 	.bundle()
 	.pipe(source(path.OUT))

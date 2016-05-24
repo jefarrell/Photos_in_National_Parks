@@ -50,14 +50,28 @@ div {
 /*	-webkit-filter: blur(3px);
 	filter: blur(3px);*/
 }
-
 #content {
+	padding: 2em 0em 2em 0em; 
+}
+
+#content, #explore {
 	text-align: center;
-	padding-top: 10px;
 	font-size: 1.3em;
 	color: #FFF;
 	z-index: 99;
 }
+
+#explore {
+	font-family: "Times New Roman", serif;
+	background-color: #000;
+	color: #FFF;
+	font-weight:700;
+	font-style: italic;
+	font-size: 3rem;
+	border-top:0.25em solid #FFF;
+	padding:0.5em;
+}
+
 
 #overlay {
 	position:absolute;
@@ -118,14 +132,14 @@ div {
 }
 
 #buttonContainer {
-	padding:2px 0 2px 0;
+	padding:0px 0 0em 0;
 	outline:none;
 	margin-left:-15px;
 	margin-right:-15px;
+	border-bottom: 0.75em solid #FFF;
 }
 
 #mapContainer {
-	/*background-color: gray;*/
 	font-size: 25px;
 	padding-left:0px;
 	padding-right:0.5%;
@@ -135,7 +149,6 @@ div {
 #infoContainer {
 	/*background-color: #C77F49;*/
 	font-size: 16px;
-	/*border: #3C5F36 solid 3px;*/
 }
 
 /* Need some media queries to resize */
@@ -144,12 +157,12 @@ div {
 	width:auto;
 /*	margin-left: -15px;
 	margin-right: -15px;*/  /* Will want this if I change bg color */
-	/*border: #3C5F36 solid 3px;*/
 }
 
 #bottom {
 	background-color: #000;
-	margin-top: 0.5%;
+	/*margin-top: 0.5em;*/
+	/*border-top: 0.75em solid #FFF*/
 }
 
 .card {
@@ -183,6 +196,10 @@ div {
 	font-weight: bold;
 }
 
+.cardVals {
+	font-weight: normal;
+}
+
 .list-group-item {
 	color: #000;
 	margin-top: 0.5rem;
@@ -194,4 +211,37 @@ div {
 #footer {
 	margin-top:1%;
 	font-size: 0.8em;
+}
+
+
+/**************/
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+/**************/
+
+
+@media (max-width: 775px) {
+	body {
+		background-color: red;
+	}
+
+	#map {
+		width:200px;
+		height:auto;
+	}
 }

@@ -1,4 +1,4 @@
-
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 var Buttons = React.createClass({
 	getInitialState: function () {
@@ -7,9 +7,9 @@ var Buttons = React.createClass({
 		};
 	},
 
-	handleClick: function () {
+	handleClick: function (event) {
 		this.setState({
-			isSelected: true
+			isSelected: !this.state.isSelected
 		});
 	},
 
@@ -18,7 +18,7 @@ var Buttons = React.createClass({
 		
 		if (isSelected) {
 			$.get('/info/'+this.props.name, function (data) {
-				ReactDOM.render(<Card url={data.url} parkname={data.name} date={data.established} />, document.getElementById('infoContainer'));
+				ReactDOM.render(<Card url={data.url} parkname={data.name} date={data.established} area={data.area} states={data.states} visitors={data.visitors} />, document.getElementById('infoContainer'));
 				ReactDOM.render(<Map parkLat={data.lat} parkLon={data.lon} parkZoom={10} />, document.getElementById('mapContainer'));			
 			});
 		}
@@ -36,7 +36,8 @@ var Buttons = React.createClass({
 var Card = React.createClass({
 
 	render: function () {
-		$('#infoContainer').css('background-color','#C77F49');
+		var info = document.getElementById('infoContainer');
+		info.style.backgroundColor = '#C77F49';
 /*		I shouldn't need this ^ but having issue
 		var cardStyle = {
     		backgroundColor: '#C77F49'  
@@ -49,11 +50,21 @@ var Card = React.createClass({
 					<h4 className={"card-title"} id="cardTitle">At a Glance</h4>
 					<ul className={"list-group list-group-flush"} style={this.props.style} id="listContainer">
 						<li className={"list-group-item"}>
-							<span className={"cardAttrs"} >Park Name: {this.props.parkname}</span>
+							<span className={"cardAttrs"} >Park Name:  </span><span className={"cardVals"}>{this.props.parkname}</span>
 						</li>
 						<li className={"list-group-item"}>
-							<span className={"cardAttrs"} >Established: {this.props.date}</span>
+							<span className={"cardAttrs"} >Established:  </span><span className={"cardVals"}>{this.props.date}</span>
 						</li>
+						<li className={"list-group-item"}>
+							<span className={"cardAttrs"} >State(s):  </span><span className={"cardVals"}>{this.props.states}</span>
+						</li>
+						<li className={"list-group-item"}>
+							<span className={"cardAttrs"} >2015 Visitors (millions):  </span><span className={"cardVals"}>{this.props.visitors}</span>
+						</li>
+						<li className={"list-group-item"}>
+							<span className={"cardAttrs"} >Area (sq. miles):  </span><span className={"cardVals"}>{this.props.area}</span>
+						</li>
+
 					</ul>
 				</div>
         	</div>			
@@ -87,7 +98,7 @@ var Map = React.createClass({displayName: "Map",
         	maxBounds: bounds,
         	minZoom: 4
         }).setView([this.state.lat, this.state.lon], this.state.zoom);
-        L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png', {
+        L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(this.map);
         this.map.scrollWheelZoom.disable();
@@ -108,7 +119,9 @@ var Map = React.createClass({displayName: "Map",
     		width: "auto"
     	};
     	return (
-    		<div className={"map"} style={divStyle} ref={(ref) => this.mapDiv = ref}></div>
+    		// <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+    		<div key={this.state.lat} className={"map"} style={divStyle} ref={(ref) => this.mapDiv = ref}></div>
+    		// </ReactCSSTransitionGroup>
     	)
     }
 });

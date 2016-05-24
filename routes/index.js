@@ -20,6 +20,7 @@ router.get('/mapauth', function(req, res) {
 });
 
 
+
 // Just checking the DB works
 router.post('/api/create/:nameval/:valval', function(req, res){
 	var name = req.params.nameval;

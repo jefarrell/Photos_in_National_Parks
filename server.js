@@ -12,6 +12,7 @@ var server = app.listen(3000, function() {
 //app.use(express.static(path.join(__dirname, './views')));
 app.use(express.static(path.join(__dirname, './public')));
 app.use(express.static(path.join(__dirname, './dist/')));
+app.use(express.static(path.join(__dirname, './data/')));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 var routes = require('./routes/index');
@@ -24,8 +25,6 @@ db.on('error', console.error.bind(console,'connection error: '));
 db.once('open', function() {
 	console.log('connected! ' + db.host, db.port, db.name);
 });
-
-
 
 app.use(function(req, res, next) {
 	var err = new Error("Not Found");

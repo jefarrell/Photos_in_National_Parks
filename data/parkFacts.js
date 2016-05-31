@@ -44,8 +44,8 @@ var facts = {
 		name: "Yellowstone",
 		url: "/imgs/cards/yellowstone.jpg",
 		established: "1978",
-		lat: "40.1981266",
-		lon: "-105.9956282",
+		lat: "44.427963",
+		lon: "-110.590649",
 		states:"Wyoming, Montana, Idaho",
 		area: "3,468",
 		visitors: "4.1"

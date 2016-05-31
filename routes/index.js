@@ -15,10 +15,9 @@ router.get('/test', function(req, res) {
 });
 
 
-router.get('/mapauth', function(req, res) {
-	res.send(secrets);
-});
-
+// router.get('/mapauth', function(req, res) {
+// 	res.send(secrets);
+// });
 
 
 // Just checking the DB works

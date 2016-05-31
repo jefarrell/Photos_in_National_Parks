@@ -3,3 +3,5 @@
 /data/db
 secrets.js
 *.DS_Store
+data/grandCanyon.js
+data/grandCanyon.json

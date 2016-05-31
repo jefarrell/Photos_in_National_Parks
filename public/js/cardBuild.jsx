@@ -1,4 +1,10 @@
-var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+var fs = require('fs');
+var grandCanyon = require('../../data/grandCanyon.js');
+
+var test = {
+	"grandCanyon": grandCanyon
+};
+
 
 var Buttons = React.createClass({
 	getInitialState: function () {
@@ -86,8 +92,14 @@ var Map = React.createClass({displayName: "Map",
 	componentWillReceiveProps: function(nextProps) {
 
 		this.map.setView([nextProps.parkLat, nextProps.parkLon], nextProps.parkZoom);
-
+		// console.log("hi");
+		// var circle = L.circle([36.0552608, -112.1218355], 500, {
+		//     color: 'red',
+		//     fillColor: '#f03',
+		//     fillOpacity: 0.5
+		// }).addTo(this.map);
 	},
+
 
     createMap: function (element) {
     	var southWest = L.latLng(25.0855988971, -132.01171875);
@@ -112,16 +124,18 @@ var Map = React.createClass({displayName: "Map",
     	this.state.zoom=10;
     },
 
-    render: function () {
 
+    render: function () {
     	var divStyle = {
     		height: 480,
     		width: "auto"
     	};
+
+
     	return (
-    		// <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+    		
     		<div key={this.state.lat} className={"map"} style={divStyle} ref={(ref) => this.mapDiv = ref}></div>
-    		// </ReactCSSTransitionGroup>
+    		
     	)
     }
 });
@@ -129,7 +143,6 @@ var Map = React.createClass({displayName: "Map",
 
 
 
-//ReactDOM.render(<Map startLat={38.8945571} startLon={-97.3677515} startZoom={4} />, document.getElementById('mapContainer'));
 
 
 

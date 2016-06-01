@@ -15,7 +15,6 @@
     "leaflet": "^0.7.7",
     "mongoose": "^4.4.12",
     "react": "^15.0.2",
-    "react-addons-css-transition-group": "^15.0.2",
     "react-dom": "^15.0.2",
     "reactify": "^1.1.1",
     "vinyl-source-stream": "^1.1.0"

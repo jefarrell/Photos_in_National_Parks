@@ -15,8 +15,7 @@ var path = {
 	DEST: 'dist',
 	DEST_SRC: 'dist/src',
 	DEST_BUILD: 'dist/build',
-	//ENTRY_POINT: 'public/js/'
-	ENTRY_POINT: 'public/js/cardBuild.jsx'
+	ENTRY_POINT: 'public/js/app.js'
 
 };
 

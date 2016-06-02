@@ -12,6 +12,7 @@ var facts = {
 	},
 	grandCanyon: {
 		name: "Grand Canyon",
+		abbrev: "grandCanyon",
 		url: "/imgs/cards/grandCanyon.jpg",
 		established: "1979",
 		lat: "36.1069652",
@@ -52,6 +53,7 @@ var facts = {
 	},
 	zion: {
 		name: "Zion",
+		abbrev: "zion",
 		url: "/imgs/cards/zion.jpg",
 		established: "1919",
 		lat: "37.2982022",

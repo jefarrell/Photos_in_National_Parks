@@ -10,7 +10,6 @@ var config = {};
 config.tileLayer = {
   uri: 'http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
   params: {
-    minZoom: 10,
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
     id: '',
     accessToken: ''
@@ -50,7 +49,6 @@ var Map = React.createClass({
   componentWillReceiveProps: function(newProps) {
 
     // Change the map view as we receive props on each button click
-    console.log(" got props: " + newProps.parkLat + ", " + newProps.parkLon);
     map.setView([newProps.parkLat, newProps.parkLon], newProps.parkZoom);
 
   },
@@ -106,7 +104,6 @@ var Map = React.createClass({
   },
 
   pointToLayer: function(feature, latlng) {
-    console.log("Reached pointToLayer " + latlng);
 
     var markerParams = {
       radius: 4,
@@ -114,17 +111,17 @@ var Map = React.createClass({
       color: "000",
       weight: 1,
       opacity: 0.5,
-      fillOpacity: 0.8
+      fillOpacity: 0.5
     };
-
     return L.circleMarker(latlng, markerParams);
   },
 
   onEachFeature: function(feature, layer) {
 
-    var popup = '<h3>' + feature.properties.name + '</h3>';
+    var popup = '<img id="popupPic" src='+feature.properties.photo + '>' +
+                '<h4 class="popup">User: </h4>' + '<p class="popup">' + feature.properties.user + '</p>'
+              + '<h4 class="popup">Date: </h4>' + '<p class="popup">' + feature.properties.time +'</p>' ;
     layer.bindPopup(popup);
-
   },
   
   getID: function() {
@@ -156,7 +153,6 @@ var Map = React.createClass({
 
   render : function() {  
     this.getData(this.props.parkName);
-    console.log("render runs - " + this.props.parkLat)
     return (
       <div id="mapUI">
         <div id="map" ></div>

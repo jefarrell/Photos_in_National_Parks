@@ -200,6 +200,20 @@ div {
 	font-weight: normal;
 }
 
+.popup {
+	color: black;
+}
+
+h4.popup{
+	font-family: "Times New Roman", serif;
+}
+
+#popupPic {
+	width:250px;
+	height:auto;
+}
+
+
 .list-group-item {
 	color: #000;
 	margin-top: 0.5rem;
@@ -212,28 +226,6 @@ div {
 	margin-top:1%;
 	font-size: 0.8em;
 }
-
-
-/**************/
-.example-enter {
-  opacity: 0.01;
-}
-
-.example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-}
-
-.example-leave {
-  opacity: 1;
-}
-
-.example-leave.example-leave-active {
-  opacity: 0.01;
-  transition: opacity 300ms ease-in;
-}
-/**************/
-
 
 @media (max-width: 775px) {
 	body {

@@ -201,17 +201,46 @@ div {
 }
 
 .popup {
-	color: black;
+	/*color: black;*/
+	font-size: 1em;
 }
 
-h4.popup{
+.popupTitle {
+	/*color: black;*/
 	font-family: "Times New Roman", serif;
+	font-style: italic;
+	font-size: 1.25em;
 }
 
 #popupPic {
 	width:250px;
 	height:auto;
 }
+
+
+.custom-popup .leaflet-popup-content-wrapper {
+  background:#3C5F36;
+  color:#fff;
+  /*font-size:16px;*/
+  /*line-height:24px;*/
+}
+.custom-popup .leaflet-popup-content-wrapper a {
+  color:#3C5F36;
+}
+.custom-popup .leaflet-popup-tip-container {
+/*  width:30px;
+  height:15px;*/
+}
+.custom-popup .leaflet-popup-tip {
+  border-left:15px solid transparent;
+  border-right:15px solid transparent;
+  border-top:15px solid #3C5F36;
+  background: #3C5F36;
+}
+
+
+
+
 
 
 .list-group-item {

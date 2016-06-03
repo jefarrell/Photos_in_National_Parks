@@ -107,8 +107,7 @@ var Map = React.createClass({
 
     var markerParams = {
       radius: 4,
-      fillColor: 'red',
-      color: "000",
+      fillColor: '#1f78b4',
       weight: 1,
       opacity: 0.5,
       fillOpacity: 0.5
@@ -118,9 +117,9 @@ var Map = React.createClass({
 
   onEachFeature: function(feature, layer) {
 
-    var popup = '<img id="popupPic" src='+feature.properties.photo + '>' +
-                '<h4 class="popup">User: </h4>' + '<p class="popup">' + feature.properties.user + '</p>'
-              + '<h4 class="popup">Date: </h4>' + '<p class="popup">' + feature.properties.time +'</p>' ;
+    var popup = '<img id="popupPic" src='+feature.properties.photo + '><br />' +
+                '<span class="popupTitle">User: </span>' + '<span class="popup">' + feature.properties.user + '</span> <br />'
+              + '<span class="popupTitle">Date: </span>' + '<span class="popup">' + feature.properties.time +'</span>' ;
     layer.bindPopup(popup);
   },
   

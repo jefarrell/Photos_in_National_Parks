@@ -43,13 +43,11 @@ var Map = React.createClass({
     // code to run just after adding the map to the DOM
     // instantiate the Leaflet map object
     this.init(this.getID());
-    // this.getData();
-
   },
 
 
   componentWillReceiveProps: function(newProps) {
-
+    // Update state and reset map as we receive new props from button clicks
     this.setState({
       lat: newProps.parkLat,
       lon: newProps.parkLon,
@@ -61,24 +59,23 @@ var Map = React.createClass({
       states: newProps.states,
       est: newProps.est
     });
-    // Change the map view as we receive props on each button click
+
     map.setView([newProps.parkLat, newProps.parkLon], newProps.parkZoom);
-    console.log(this.state.name)
   },
 
-
+  // load up appropriate geojson file, then call addData
   getData: function(parkAbv) {
     var self = this;
     qwest.get(parkAbv+'.geojson',null,{responseType:'json'})
       .then(function(xhr,res) {
         self.addData(res);
-      })
-      .catch(function(xhr, res, e) {
-        console.log('qwest catch: ', xhr, res, e);
+      }).catch(function(xhr, res, e) {
+        console.log('qwest map catch: ', xhr, res, e);
       });  
   },
 
-
+  // add data from geojson file to the map
+  // also clear old data if applicable
   addData: function(data) {
     this.state.geojson = data;
 
@@ -105,6 +102,7 @@ var Map = React.createClass({
     // zoom to feature here?
   },
 
+  // set stylings for individual markers
   pointToLayer: function(feature, latlng) {
 
     var markerParams = {
@@ -117,11 +115,12 @@ var Map = React.createClass({
     return L.circleMarker(latlng, markerParams);
   },
 
-
+  // make a popup for each marker
+  // it's going to load a photo from a url and show some user data
   onEachFeature: function(feature, layer) {
 
     var popup = '<img id="popupPic" src='+feature.properties.photo + '><br />' +
-                '<span class="popupTitle">User: </span>' + '<span class="popup">' + feature.properties.user + '</span> <br />'
+                '<span class="popupTitle">User: </span>' + '<span class="popup"><a href="http://www.instagram.com/'+ feature.properties.user+'" target="_blank" >' + feature.properties.user + '</a></span> <br />'
               + '<span class="popupTitle">Date: </span>' + '<span class="popup">' + feature.properties.time +'</span>' ;
     layer.bindPopup(popup);
   },
@@ -131,7 +130,7 @@ var Map = React.createClass({
     return ReactDOM.findDOMNode(this).querySelectorAll('#map')[0];
   },
 
-
+  // make the map
   init: function(id) {
     var southWest = L.latLng(25.0855988971, -132.01171875);
     var northEast = L.latLng(49.8096315636, -65.91796875);
@@ -152,12 +151,12 @@ var Map = React.createClass({
     });
   },
 
-
+  // Render also makes our info Card to sit on top of the map
   render : function() {  
     this.getData(this.props.parkAbv);
     return (
       <div id="mapUI">
-        <Card name={this.state.name} est={this.state.est} vis={this.state.vis} area={this.state.area} states={this.state.states}/>
+        <Card name={this.state.name} est={this.state.est} vis={this.state.visitors} area={this.state.area} states={this.state.states}/>
         <div id="map" ></div>
       </div>
     );

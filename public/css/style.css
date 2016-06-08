@@ -7,15 +7,12 @@ body {
 
 #frame {
 	background-color: #3C5F36;
-	/*border: white solid 2px;*/
 }
 
 #headerrow {
-	/*border: white solid 2px;*/
 	background-color: #000000;
 	font-family: "Times New Roman", serif;
 	font-size:5em;
-	/*border-bottom: white solid 2px;*/
 }
 
 /* DEBUG */
@@ -96,7 +93,7 @@ div {
 	outline:none;
 }
 
-/*--- Thanks Bass Jobsen on S.O. for this boostrap4 fix */
+/* --- Thanks Bass Jobsen on S.O. for this boostrap4 fix */
 .btn-group-justified {
   display: table;
   width: 100%;
@@ -116,7 +113,7 @@ div {
 .btn-group-justified .btn-group .dropdown-menu {
       left: auto; 
  }
-/*   ---*/
+/*   --- */
 
 .btn {
 	border-radius: 0px;
@@ -142,12 +139,9 @@ div {
 #mapContainer {
 	font-size: 25px;
 	padding: 0 0 0 0;
-	/*padding-right:0.5%;*/
-	/*border: #3C5F36 solid 3px;*/
 }
 
 #infoContainer {
-	/*background-color: #C77F49;*/
 	font-size: 16px;
 }
 
@@ -166,7 +160,8 @@ div {
 
 .popup {
 	color: black;
-	font-size: 1em;
+	font-size: 1.25em;
+	text-decoration: none;
 }
 
 .popupTitle {
@@ -180,18 +175,17 @@ div {
 #popupPic {
 	width:250px;
 	height:auto;
-	margin-bottom: -5%;
+	/*border: 2px solid #3C5F36 ;*/  /*Not sure if this looks ok..*/
 }
 
 
 .custom-popup .leaflet-popup-content-wrapper {
 	background:#FFF;
 	color:#FFF;
-	/*font-size:16px;*/
-	/*line-height:24px;*/
+
 }
 .custom-popup .leaflet-popup-content-wrapper a {
-	color:#3C5F36;
+	color:#000;
 }
 .custom-popup .leaflet-popup-tip-container {
 	/*  width:30px;
@@ -200,7 +194,6 @@ div {
 .custom-popup .leaflet-popup-tip {
 	border-left:15px solid transparent;
 	border-right:15px solid transparent;
-	/*border-top:15px solid #3C5F36;*/
 	background: #FFF;
 }
 
@@ -226,6 +219,8 @@ div {
 	font-family: "Times New Roman", serif;
 	font-style: italic;
 	font-size: 1.5em;
+	margin-bottom: 0;
+	padding-bottom: 0;
 }
 
 hr {
@@ -237,7 +232,7 @@ hr {
 }
 
 .cardAttrs {
-	padding-left: 0.9rem;
+	
 	font-weight: bold;
 	color: #777;
 }
@@ -247,13 +242,15 @@ hr {
 	color: #777;
 }
 
-.list-group-item {
-	color: #000;
-	margin-top: 0.5rem;
-	padding: 0;
-	font-size: 1em;
-	border:none;
+#cardList {
+	list-style: none;
+	padding-left: 0;
 }
+
+.cardItem {
+	padding:0.2rem;
+}
+
 
 #footer {
 	margin-top:1%;

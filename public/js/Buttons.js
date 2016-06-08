@@ -1,4 +1,4 @@
-var Card = require('./Card');
+// var Card = require('./Card');
 var Map = require('./Map');
 
 
@@ -20,9 +20,11 @@ var Buttons = React.createClass({
 		
 		if (isSelected) {
 			$.get('/info/'+this.props.name, function (data) {
-				ReactDOM.render(<Card url={data.url} parkname={data.name} date={data.established} area={data.area} states={data.states} visitors={data.visitors} />, document.getElementById('infoContainer'));
-				// ReactDOM.render(<dataMap parkLat={data.lat} parkLon={data.lon} parkZoom={10} />, document.getElementById('mapContainer'));			
-				ReactDOM.render(<Map parkLat={data.lat} parkLon={data.lon} parkName={data.abbrev}/>, document.getElementById('mapContainer'));
+				//ReactDOM.render(<Card url={data.url} parkname={data.name} date={data.established} area={data.area} states={data.states} visitors={data.visitors} />, document.getElementById('infoContainer'));
+				ReactDOM.render(<Map parkLat={data.lat} parkLon={data.lon} parkZoom={data.zoom} 
+					parkName={data.name} parkAbv={data.abbrev} est={data.established} vis={data.visitors}
+					area={data.area} states={data.states}/>, 
+					document.getElementById('mapContainer'));
 			});
 		}
 		

@@ -1,11 +1,13 @@
 
 // Got tons of helpful strategy from clhenrick here: 
 // https://github.com/clhenrick/React-Leaflet-demo/blob/master/src/js/Map.js
-
+var Card = require('./Card');
 var L = require('leaflet');
 var qwest = require('qwest');
 var map;
+var info;
 var config = {};
+
 
 config.tileLayer = {
   uri: 'http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
@@ -25,15 +27,14 @@ var Map = React.createClass({
       geojson: null,
       lat: this.props.parkLat,
       lon: this.props.parkLon,
-      zoom: 10
+      zoom: this.props.parkZoom,
+      abv: this.props.parkAbv,
+      name: this.props.parkName,
+      visitors: this.props.vis,
+      area: this.props.area,
+      states: this.props.states,
+      est: this.props.est
     };
-  },
-  
-
-  componentWillMount: function() {
-    
-    // code to run just before adding the map
-
   },
 
 
@@ -43,27 +44,32 @@ var Map = React.createClass({
     // instantiate the Leaflet map object
     this.init(this.getID());
     // this.getData();
+
   },
 
 
   componentWillReceiveProps: function(newProps) {
 
+    this.setState({
+      lat: newProps.parkLat,
+      lon: newProps.parkLon,
+      zoom: newProps.parkZoom,
+      abv: newProps.parkAbv,
+      name: newProps.parkName,
+      visitors: newProps.vis,
+      area: newProps.area,
+      states: newProps.states,
+      est: newProps.est
+    });
     // Change the map view as we receive props on each button click
     map.setView([newProps.parkLat, newProps.parkLon], newProps.parkZoom);
-
+    console.log(this.state.name)
   },
 
 
-  componentWillUnmount: function() {
-    
-    // code to run just before removing the map
-
-  },
-
-
-  getData: function(parkName) {
+  getData: function(parkAbv) {
     var self = this;
-    qwest.get(parkName+'.geojson',null,{responseType:'json'})
+    qwest.get(parkAbv+'.geojson',null,{responseType:'json'})
       .then(function(xhr,res) {
         self.addData(res);
       })
@@ -77,14 +83,10 @@ var Map = React.createClass({
     this.state.geojson = data;
 
     if (this.state.geojsonLayer && data) {
-
-      console.log("later && data");
       this.state.geojsonLayer.clearLayers();
       this.state.geojsonLayer.addData(data);
 
     } else if (!this.state.geojsonLayer) {
-
-      console.log("else if");
       this.state.geojsonLayer = L.geoJson(data, {
         onEachFeature: this.onEachFeature,
         pointToLayer: this.pointToLayer
@@ -115,6 +117,7 @@ var Map = React.createClass({
     return L.circleMarker(latlng, markerParams);
   },
 
+
   onEachFeature: function(feature, layer) {
 
     var popup = '<img id="popupPic" src='+feature.properties.photo + '><br />' +
@@ -123,10 +126,10 @@ var Map = React.createClass({
     layer.bindPopup(popup);
   },
   
+
   getID: function() {
     return ReactDOM.findDOMNode(this).querySelectorAll('#map')[0];
   },
-
 
 
   init: function(id) {
@@ -140,20 +143,21 @@ var Map = React.createClass({
     }).setView([this.state.lat, this.state.lon], this.state.zoom)
     map.scrollWheelZoom.disable();
     L.control.scale({ position: "bottomleft"}).addTo(map);
+    
     // set our state to include the tile layer
     this.state.tileLayer = L.tileLayer(config.tileLayer.uri, config.tileLayer.params).addTo(map);
 
     this.setState({
       tileLayer: this.state.tileLayer
     });
-
   },
 
 
   render : function() {  
-    this.getData(this.props.parkName);
+    this.getData(this.props.parkAbv);
     return (
       <div id="mapUI">
+        <Card name={this.state.name} est={this.state.est} vis={this.state.vis} area={this.state.area} states={this.state.states}/>
         <div id="map" ></div>
       </div>
     );

@@ -132,7 +132,7 @@ div {
 }
 
 #buttonContainer {
-	padding:0px 0 0em 0;
+	padding:0 0 0 0;
 	outline:none;
 	margin-left:-15px;
 	margin-right:-15px;
@@ -141,8 +141,8 @@ div {
 
 #mapContainer {
 	font-size: 25px;
-	padding-left:0px;
-	padding-right:0.5%;
+	padding: 0 0 0 0;
+	/*padding-right:0.5%;*/
 	/*border: #3C5F36 solid 3px;*/
 }
 
@@ -153,10 +153,8 @@ div {
 
 /* Need some media queries to resize */
 #map {
-	height:480px;
+	height:500px;
 	width:auto;
-/*	margin-left: -15px;
-	margin-right: -15px;*/  /* Will want this if I change bg color */
 }
 
 #bottom {
@@ -165,83 +163,89 @@ div {
 	/*border-top: 0.75em solid #FFF*/
 }
 
-.card {
-	margin-top: .9375rem;
-	border-radius: 0;
-	border: 0;
-}
-
-#card-header-image {
-	width:100%;
-	border-radius: 0;
-}
-
-#cardTitle {
-	text-align: center;
-	font-family: "Times New Roman", serif;
-	font-style: italic;
-	background-color: #000;
-	color:#FFF;
-	border-top:3px #FFF solid;
-	/*padding: 0 1rem 0 1rem;*/
-}
-
-
-.card-block {
-	padding: 0;
-}
-
-.cardAttrs {
-	padding-left: 0.9rem;
-	font-weight: bold;
-}
-
-.cardVals {
-	font-weight: normal;
-}
 
 .popup {
-	/*color: black;*/
+	color: black;
 	font-size: 1em;
 }
 
 .popupTitle {
-	/*color: black;*/
+	color: black;
 	font-family: "Times New Roman", serif;
 	font-style: italic;
-	font-size: 1.25em;
+	font-size: 1.5em;
+	font-weight: bold;
 }
 
 #popupPic {
 	width:250px;
 	height:auto;
+	margin-bottom: -5%;
 }
 
 
 .custom-popup .leaflet-popup-content-wrapper {
-  background:#3C5F36;
-  color:#fff;
-  /*font-size:16px;*/
-  /*line-height:24px;*/
+	background:#FFF;
+	color:#FFF;
+	/*font-size:16px;*/
+	/*line-height:24px;*/
 }
 .custom-popup .leaflet-popup-content-wrapper a {
-  color:#3C5F36;
+	color:#3C5F36;
 }
 .custom-popup .leaflet-popup-tip-container {
-/*  width:30px;
-  height:15px;*/
+	/*  width:30px;
+	height:15px;*/
 }
 .custom-popup .leaflet-popup-tip {
-  border-left:15px solid transparent;
-  border-right:15px solid transparent;
-  border-top:15px solid #3C5F36;
-  background: #3C5F36;
+	border-left:15px solid transparent;
+	border-right:15px solid transparent;
+	/*border-top:15px solid #3C5F36;*/
+	background: #FFF;
 }
 
+#mapCard {
+	position: absolute;
+	top: 1em;
+	right: 1em;
+	z-index: 10;
+	width: 200px;
+	height: auto;
+	background: hsla(0,100%,100%,0.8);
+	margin: 1em;
+	font-family: sans-serif;
+	font-size: 13px;
+	padding: 5px;
+	padding-bottom: 1em;
+	border-radius: 3px;
+}
 
+#mapCard h4 {
+	text-align: center;
+	color: #000;
+	font-family: "Times New Roman", serif;
+	font-style: italic;
+	font-size: 1.5em;
+}
 
+hr {
+	margin-top: 0;
+	margin-bottom: 0.5em;
+	color: #000;
+	background-color: #000;
+	height: 0.25em;
+}
 
+.cardAttrs {
+	padding-left: 0.9rem;
+	font-weight: bold;
+	color: #777;
+}
 
+.cardVals {
+	font-weight: normal;
+	color: #777;
+}
 
 .list-group-item {
 	color: #000;

@@ -33,14 +33,16 @@
 			<div id="overlay"></div>	
 			<div class="col-md-2"></div>
 			<div class="col-md-8" id="content">
-				<p> 
-				Lorem ipsum dolor sit amet, decore feugait mnesarchum et sit, ea vis postea reprimique concludaturque. Putant mediocrem usu in. An vero dicant mea, tale omittam pro id. Porro semper ei eum, in virtute principes maiestatis his. Sit ornatus verterem te, in pri dolor doming vocent, homero voluptatum percipitur usu ad. In eum esse aliquando, errem commodo intellegat mei ne, ad vis magna eligendi deserunt.
+				<p>
+					2016 marks the 100th anniversary of the founding of the National Park Service.  The parks continue to grow in popularity, with a record 307 million visitors in 2015.  There are 411 park sites spanning over 84 million acres of US land.  These include historic sites, lakeshores, national monuments and, most notably, those sites designated as National Parks.  
 				</p>
 				<p>
-				Summo vulputate temporibus mei et, id usu modo conclusionemque, est te mucius appareat sadipscing. Case feugiat oportere mel te, te eum nemore aliquip instructior. Est elit viderer in. Te ius nihil mentitum, eu eam paulo melius tacimates. No quo ullum consulatu disputando, in vocent contentiones duo, ei commodo propriae eloquentiam sed. Ei populo praesent omittantur vel. Nibh antiopam te has, cu cum mediocrem eloquentiam.
+					The National Parks preserve and protect our most important natural landscapes.  Generations of people from across the world are given the chance to experience their beauty, and learn a lifetime of appreciation for the outdoors.  
 				</p>
 				<p>
-				Assum perfecto ex mea, sit te liber scaevola reprimique. Eu per choro animal mediocritatem, paulo admodum oporteat mel id, eius tation consulatu vim no. Zril sanctus elaboraret te sit, inermis dolores abhorreant eam et, admodum civibus definitiones et ius. Usu enim pertinax et. An movet decore persius quo, persius maiorum molestiae quo eu, quidam fabulas philosophia sea ne. Fuck you CSS!!!!
+					The National Park Service is a network of over 20,000 employees, volunteers and partners, tasked with protecting these lands.  They offer stewardship of the parks, in their words "...engaging communities through recreation, conservation, and historic preservation programs."
+				<p>
+					In appreciation of this anniversary, I wanted to make a project showcasing one way people engage with the parks: through photos.  Photography of the National Parks, immortalized by Ansel Adams, is now often shown socially through Instagram.  In this project, we'll explore over 300,000 photographs, taken by xxx people, related to the parks.  Methodology and more statistics are below, but for now, choose a park and begin exploring how and where people photograph the landscapes of America.
 				</p>
 			
 			</div>
@@ -49,7 +51,7 @@
 
 		<div class="row"> 
 			<div class="col-md-12" id="explore">
-				<h1>Explore a Park</h1>
+				<h1 class="sectHead">Explore a Park</h1>
 			</div>
 		</div>
 
@@ -81,10 +83,108 @@
 		</div>
 		
 		<!-- footer section -->
-		<div class="row" id="bottom">
-			<div class="col-md-12"> Conclusions </div>
+		<div class="row " id="bottom">
+			
+			<h1 class="sectHead" id="bottomHead">Data & Conclusions</h1>
+			<div class="col-md-1"></div>
+			<div class="col-md-9" id="conclusions">
+				<div class="row">
+					
+					<h2>Data Sources</h2>
+					<p>
+						All data used in this project was gathered through the Instagram API, which provides access to all publicly-available posts.  The data was gathered and parsed in python.  This application is NOT live - collection took place on May 25-26th 2016.  Instagram was announcing big API changes on June 1st, so I opted to collect all data before that date.
+					</p>
+					
+					<h2>Methodology</h2>
+					<p>
+						The 10 parks chosen were the 10 most popular parks of 2015, ranked by total visitors.
+						<br />
+						<br />
+						The best method I found was to search by popular hashtags used in relation to each specific park.  Gathering posts with a specific location tag (e.g. posts tagged at "Yellowstone National Park") results in all posts showing up at the same location marker.  So after finding the popular hashtags for each park, I gathered 33,000 posts per park, for a total of 330,000.  The dataset was filtered to remove posts that did not include location data, which averaged to about half (or ~16,000) of the posts.  I then used Shape files, provided by <a href="https://catalog.data.gov/dataset/national-park-boundariesf0a4c" target="_blank">data.gov</a>, of the National Park boundaries.  Using these boundaries, I could eliminate any posts that were not taken within the geographic boundaries of the parks themselves. 
+						<br />
+						<br />
+						Was that the right method?  I don't know, probably not.  But it was the best approach I found.  I'd love to hear if you have a better way.
+					</p>
+
+					<h2>Inside the Numbers</h2>
+					<div id="testC">
+						<div id="insideText">
+							<p>
+								How did those 330,000 posts break 
+								down?  From that original number, xxx posts had location data, or about 50%.  After filtering with geographic boundaries, we're left with 84,696 posts.  The breakdown per park is to the right.
+							</p>
+						</div>
+						<div class="dataTable">
+							<table class="table">
+							  <tbody>
+							  	<th> Posts per Park </th>
+							    <tr>
+							      <td class="tablePark">Zion</td>
+							      <td>17,443</td>
+							    </tr>
+							    <tr>
+							      <td class="tablePark">Yosemite</td>
+							      <td>16,593</td>
+							    </tr>
+							    <tr>
+							      <td class="tablePark">Acadia</td>
+							      <td>13,561</td>
+							    </tr>
+							    <tr>
+							      <td class="tablePark">Yellowstone</td>
+							      <td>10,877</td>
+							    </tr>
+							    <tr>
+							      <td class="tablePark">Grand Teton</td>
+							      <td>8,010</td>
+							    </tr>
+							    <tr>
+							      <td class="tablePark">Smoky Mountains</td>
+							      <td>4,633</td>
+							    </tr>
+							    <tr>
+							      <td class="tablePark">Grand Canyon</td>
+							      <td>4,228</td>
+							    </tr>
+							    <tr>
+							      <td class="tablePark">Olympic</td>
+							      <td>3,923</td>
+							    </tr>
+							    <tr>
+							      <td class="tablePark">Glacier</td>
+							      <td>3,627</td>
+							    </tr>
+							    <tr>
+							      <td class="tablePark">Rocky Mountain</td>
+							      <td>1,802</td>
+							    </tr>
+
+							  </tbody>
+							</table>
+						</div>
+					</div> <!-- testC -->
+					<!-- <p>
+
+					</p> -->
+					<h2>Technical Explanations</h2>
+					<p>
+						The code for this site is on github <a href="https://github.com/jefarrell/National_Park_Visualization" target="_blank">here</a>.
+						<br />
+						<br />
+						My methods for collecting and parsing the data are also available in iPython notebooks on github here.
+					</p>
+
+				</div>
+			</div>
+			<div class="col-md-2"></div>
+			
+
+		</div>
+		<div class="row">
+			<div class="col-md-2"></div>
 			<div class="col-md-12" id="footer"> 
-				<p> Header image courtesy of <a href="https://www.flickr.com/photos/ddebold/" target="_blank">Don DebBold</a> on Flickr via Creative Commons License.
+				<p> Header image courtesy of <a href="https://www.flickr.com/photos/ddebold/" target="_blank">Don DebBold</a> on Flickr via Creative Commons License. </p>
+				<p> All data was accessed through the Instagram API and was publicly available. </p>
 			</div>
 		</div>
 	</div>

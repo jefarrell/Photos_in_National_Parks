@@ -1,3 +1,7 @@
+html {
+	font-size: 100%;
+}
+
 body {
 	background-color: #3C5F36;
 	color: white;
@@ -47,28 +51,43 @@ div {
 /*	-webkit-filter: blur(3px);
 	filter: blur(3px);*/
 }
+
 #content {
 	padding: 2em 0em 2em 0em; 
 }
 
-#content, #explore {
+#content, #explore, #bottom {
 	text-align: center;
 	font-size: 1.3em;
 	color: #FFF;
 	z-index: 99;
 }
 
-#explore {
+.sectHead {
 	font-family: "Times New Roman", serif;
 	background-color: #000;
 	color: #FFF;
-	font-weight:700;
 	font-style: italic;
 	font-size: 3rem;
-	border-top:0.25em solid #FFF;
 	padding:0.5em;
+	margin-bottom: 0;
 }
 
+#explore {
+	border-top:0.25rem solid #FFF;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#bottom {
+	margin-top: 0.5em;
+	border-top: 0.25rem solid #FFF;
+	background-color: #000;
+}
+
+#explore, #bottom h1 {
+	margin-top: 0.5rem;
+}
 
 #overlay {
 	position:absolute;
@@ -77,16 +96,16 @@ div {
 	width:100%;
 	height:100%;
 	background-color: #000;
-	opacity:0.6;
+	opacity:0.7;
 }
 
 /* keep map/info rows the same height */
 #infoRow {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .btn-group {
@@ -95,10 +114,10 @@ div {
 
 /* --- Thanks Bass Jobsen on S.O. for this boostrap4 fix */
 .btn-group-justified {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: separate; 
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+	border-collapse: separate; 
 }
 .btn-group-justified .btn,
 .btn-group-justified .btn-group {
@@ -111,7 +130,7 @@ div {
 }
 .btn-group-justified .btn .dropdown-menu,
 .btn-group-justified .btn-group .dropdown-menu {
-      left: auto; 
+	left: auto; 
  }
 /*   --- */
 
@@ -133,7 +152,7 @@ div {
 	outline:none;
 	margin-left:-15px;
 	margin-right:-15px;
-	border-bottom: 0.75em solid #FFF;
+	/*border-bottom: 0.25rem solid #FFF;*/
 }
 
 #mapContainer {
@@ -147,16 +166,9 @@ div {
 
 /* Need some media queries to resize */
 #map {
-	height:500px;
+	height:600px;
 	width:auto;
 }
-
-#bottom {
-	background-color: #000;
-	/*margin-top: 0.5em;*/
-	/*border-top: 0.75em solid #FFF*/
-}
-
 
 .popup {
 	color: black;
@@ -177,7 +189,9 @@ div {
 	height:auto;
 	/*border: 2px solid #3C5F36 ;*/  /*Not sure if this looks ok..*/
 }
-
+.leaflet-container a.leaflet-popup-close-button {
+	color: #757575;
+}
 
 .custom-popup .leaflet-popup-content-wrapper {
 	background:#FFF;
@@ -217,10 +231,11 @@ div {
 	text-align: center;
 	color: #000;
 	font-family: "Times New Roman", serif;
-	font-style: italic;
-	font-size: 1.5em;
+	/*font-style: italic;*/
+	font-weight: 600;
+	font-size: 1.75em;
 	margin-bottom: 0;
-	padding-bottom: 0;
+	padding-bottom: 0.5rem;
 }
 
 hr {
@@ -228,7 +243,7 @@ hr {
 	margin-bottom: 0.5em;
 	color: #000;
 	background-color: #000;
-	height: 0.25em;
+	height: 0.2em;
 }
 
 .cardAttrs {
@@ -245,6 +260,7 @@ hr {
 #cardList {
 	list-style: none;
 	padding-left: 0;
+	margin-bottom: 0;
 }
 
 .cardItem {
@@ -252,11 +268,76 @@ hr {
 }
 
 
+#conclusions {
+	text-align: left;
+	font-family: "myriad-pro";
+  	font-weight: lighter;
+  	padding: 0 0 0 0.5em;  
+}
+
+#conclusions p {
+	padding-left: 0.5em;
+	font-size: 0.8em;
+}
+
+#conclusions h2 {
+	font-family: "Times New Roman", serif;
+	padding-top:0.5em;
+}
+
+a {
+	color: #7AC043;
+}
+
+.table {
+	font-size: 0.8em;
+	width: 40%;
+	margin-left: auto;
+	margin-right: 0;
+}
+
+#insideText {
+	margin-left: 0;
+	margin-right: auto;
+	float:left;
+	width:50%;
+	
+}
+
+.table td {
+	/*width: 50%*/;
+	line-height: 0.25;
+}
+
+#testC {
+	width: 100%;
+	float:left;
+}
+
+
+.dataTable {
+}
+
+.table th {
+	font-family: "Times New Roman", serif;
+	line-height: 0.25em;
+	border: none;
+	font-size: 1.2em;
+}
+
+.tablePark {
+	font-style: italic;
+	font-weight: 500;
+}
+
 #footer {
 	margin-top:1%;
 	font-size: 0.8em;
 }
 
+#footer p {
+	margin-bottom: 0;
+}
 @media (max-width: 775px) {
 	body {
 		background-color: red;

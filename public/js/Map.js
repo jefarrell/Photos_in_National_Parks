@@ -107,7 +107,8 @@ var Map = React.createClass({
 
     var markerParams = {
       radius: 4,
-      fillColor: '#1f78b4',
+      color: '#1f78b4',
+      fillColor: '#e31a1c',
       weight: 1,
       opacity: 0.5,
       fillOpacity: 0.5

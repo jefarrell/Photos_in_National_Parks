@@ -1,5 +1,5 @@
 var Buttons = require('./Buttons');
-
+var Map = require('./Map');
 
 ReactDOM.render(<Buttons name="smokyMountains" display="Great Smoky Mountains"/>,  document.getElementById('btn-one'));
 ReactDOM.render(<Buttons name="grandCanyon" display="Grand Canyon"/>,  document.getElementById('btn-two'));
@@ -13,3 +13,4 @@ ReactDOM.render(<Buttons name="acadia" display="Acadia"/>,  document.getElementB
 ReactDOM.render(<Buttons name="glacier" display="Glacier"/>,  document.getElementById('btn-ten'));
 
 
+ReactDOM.render(<Map />, document.getElementById('mapContainer'));

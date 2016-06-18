@@ -25,15 +25,15 @@ var Map = React.createClass({
       tileLayer: null,
       geojsonLayer: null,
       geojson: null,
-      lat: this.props.parkLat,
-      lon: this.props.parkLon,
-      zoom: this.props.parkZoom,
-      abv: this.props.parkAbv,
-      name: this.props.parkName,
-      visitors: this.props.vis,
-      area: this.props.area,
-      states: this.props.states,
-      est: this.props.est
+      lat: '40.9584787',
+      lon: '-95.8119861',
+      zoom: 4,
+      abv: '',
+      name: '',
+      visitors: '',
+      area: '',
+      states: '',
+      est: ''
     };
   },
 
@@ -48,6 +48,7 @@ var Map = React.createClass({
 
   componentWillReceiveProps: function(newProps) {
     // Update state and reset map as we receive new props from button clicks
+    this.getData(newProps.parkAbv);
     this.setState({
       lat: newProps.parkLat,
       lon: newProps.parkLon,
@@ -154,7 +155,6 @@ var Map = React.createClass({
 
   // Render also makes our info Card to sit on top of the map
   render : function() {  
-    this.getData(this.props.parkAbv);
     return (
       <div id="mapUI">
         <Card name={this.state.name} est={this.state.est} vis={this.state.visitors} area={this.state.area} states={this.state.states}/>

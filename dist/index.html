@@ -41,7 +41,7 @@
 				<p>
 					The National Park Service is a network of over 20,000 employees, volunteers and partners, tasked with protecting these lands.  They offer stewardship of the parks, in their words "...engaging communities through recreation, conservation, and historic preservation programs."
 				<p>
-					In appreciation of this anniversary, I wanted to make a project showcasing one way people engage with the parks: through photos.  Photography of the National Parks, immortalized by Ansel Adams, is now often shown socially through Instagram.  In this project, we'll explore over 300,000 photographs, taken by xxx people, related to the parks.  Methodology and more statistics are below, but for now, choose a park and begin exploring how and where people photograph the landscapes of America.
+					In appreciation of this anniversary, I wanted to make a project showcasing one way people engage with the parks: through photos.  Photography of the National Parks, immortalized by Ansel Adams, is now often shown socially through Instagram.  In this project, we'll explore over 300,000 photographs, taken by hundres of thousands of people, related to the parks.  Below are the 10 most popular parks from 2015: choose one and begin exploring how and where people photograph the landscapes of America.  Methodology and more statistics are below.
 				</p>
 			
 			</div>
@@ -87,22 +87,6 @@
 			<div class="col-md-1"></div>
 			<div class="col-md-9" id="conclusions">
 				<div class="row">
-					
-					<h2>Data Sources</h2>
-					<p>
-						All data used in this project was gathered through the Instagram API, which provides access to all publicly-available posts.  The data was gathered and parsed in python.  This application is NOT live - collection took place on May 25-26th 2016.  Instagram was announcing big API changes on June 1st, so I opted to collect all data before that date.
-					</p>
-					
-					<h2>Methodology</h2>
-					<p>
-						The 10 parks chosen were the 10 most popular parks of 2015, ranked by total visitors.
-						<br />
-						<br />
-						The best method I found was to search by popular hashtags used in relation to each specific park.  Gathering posts with a specific location tag (e.g. posts tagged at "Yellowstone National Park") results in all posts showing up at the same location marker.  So after finding the popular hashtags for each park, I gathered 33,000 posts per park, for a total of 330,000.  The dataset was filtered to remove posts that did not include location data, which averaged to about half (or ~16,000) of the posts.  I then used Shape files, provided by <a href="https://catalog.data.gov/dataset/national-park-boundariesf0a4c" target="_blank">data.gov</a>, of the National Park boundaries.  Using these boundaries, I could eliminate any posts that were not taken within the geographic boundaries of the parks themselves. 
-						<br />
-						<br />
-						Was that the right method?  I don't know, probably not.  But it was the best approach I found.  I'd love to hear if you have a better way.
-					</p>
 
 					<h2>Inside the Numbers</h2>
 					<div id="testC">
@@ -110,6 +94,10 @@
 							<p>
 								How did those 330,000 posts break 
 								down?  From that original number, xxx posts had location data, or about 50%.  After filtering with geographic boundaries, we're left with 84,696 posts.  The breakdown per park is to the right.
+							</p>
+							<p>
+								There is actually a negative correlation between the parks 2015 rank in popularity and the number of posts that fit out filter.
+								There's several factors that could have influenced these findings.  One is reception - posts without GPS data wouldn't have made it here, so poor coverage could have factored in.  Another is frequency.  Picking a finite amount of posts means that will stretch over different amounts of time per park.   
 							</p>
 						</div>
 						<div class="dataTable">
@@ -164,6 +152,31 @@
 					<!-- <p>
 
 					</p> -->
+					<h2>Where Did the Locations Come From?</h2>
+					<p>
+						Location data in photos comes from the GPS in your phone in a process called geotagging.  That data is then picked up in Instagram.  This means our data is limited to photos taken where GPS was available.
+						<br />
+						<br />
+						This is data people allow to be shared, but don't always realize it is being shared.  
+						If that makes you uncomfortable, you can turn it off.  <a href="http://www.igeeksblog.com/disable-geotagging-for-photos-on-iphone-ipad/" target="_blank">This guide</a> shows how to disable geotagging on an iPhone.  If you only want to turn off geotagging in Instagram, check <a href="https://instagramtipsandtricks.blogspot.com/p/turn-location-on-or-off.html" target="_blank">this guide</a> out.
+					</p>
+
+					<h2>Data Sources</h2>
+					<p>
+						All data used in this project was gathered through the Instagram API, which provides access to all publicly-available posts.  The data was gathered and parsed in python.  This application is NOT live - collection took place on May 25-26th 2016.  Instagram was announcing big API changes on June 1st, so I opted to collect all data before that date.
+					</p>
+					
+					<h2>Methodology</h2>
+					<p>
+						The 10 parks chosen were the 10 most popular parks of 2015, ranked by total visitors.
+						<br />
+						<br />
+						The best method I found was to search by popular hashtags used in relation to each specific park.  Gathering posts with a specific location tag (e.g. posts tagged at "Yellowstone National Park") results in all posts showing up at the same location marker.  So after finding the popular hashtags for each park, I gathered 33,000 posts per park, for a total of 330,000.  The dataset was filtered to remove posts that did not include location data, which averaged to about half (or ~16,000) of the posts.  I then used Shape files, provided by <a href="https://catalog.data.gov/dataset/national-park-boundariesf0a4c" target="_blank">data.gov</a>, of the National Park boundaries.  Using these boundaries, I could eliminate any posts that were not taken within the geographic boundaries of the parks themselves. 
+						<br />
+						<br />
+						Was that the right method?  I don't know, probably not.  But it was the best approach I found.  I'd love to hear if you have a better way.
+					</p>
+
 					<h2>Technical Explanations</h2>
 					<p>
 						The code for this site is on github <a href="https://github.com/jefarrell/National_Park_Visualization" target="_blank">here</a>.

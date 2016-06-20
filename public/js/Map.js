@@ -8,7 +8,6 @@ var map;
 var info;
 var config = {};
 
-
 config.tileLayer = {
   uri: 'http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
   params: {
@@ -29,11 +28,11 @@ var Map = React.createClass({
       lon: '-95.8119861',
       zoom: 4,
       abv: '',
-      name: '',
-      visitors: '',
-      area: '',
-      states: '',
-      est: ''
+      name: 'National Park Service',
+      est: '1916',
+      states: '27 of 50 states have National Parks',
+      visitors: '307',
+      area: '131,250'
     };
   },
 
@@ -90,16 +89,6 @@ var Map = React.createClass({
         pointToLayer: this.pointToLayer
       }).addTo(map);
     }
-    /*
-     having problems with this setState
-     this makes the map rerender over and over?
-    */
-
-    // this.setState({
-    //   geojson: this.state.geojson,
-    //   geojsonLayer: this.state.geojsonLayer
-    // });
-
     // zoom to feature here?
   },
 

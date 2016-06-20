@@ -1,3 +1,6 @@
+// Create all the buttons, and render an empty map to start
+// Button clicks will control map visualizations and card
+
 var Buttons = require('./Buttons');
 var Map = require('./Map');
 

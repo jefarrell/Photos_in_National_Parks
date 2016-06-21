@@ -8,6 +8,7 @@ var map;
 var info;
 var config = {};
 
+
 config.tileLayer = {
   uri: 'http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}',
   params: {
@@ -111,8 +112,8 @@ var Map = React.createClass({
   onEachFeature: function(feature, layer) {
 
     var popup = '<img id="popupPic" src='+feature.properties.photo + '><br />' +
-                '<span class="popupTitle">User: </span>' + '<span class="popup"><a href="http://www.instagram.com/'+ feature.properties.user+'" target="_blank" >' + feature.properties.user + '</a></span> <br />'
-              + '<span class="popupTitle">Date: </span>' + '<span class="popup">' + feature.properties.time +'</span>' ;
+                '<span class="popup" id="popupUser"><a href="http://www.instagram.com/'+ feature.properties.user+'" target="_blank" >@' + feature.properties.user + '</a></span> <br />'
+              +   '<span class="popup">' + feature.properties.time +'</span>' ;
     layer.bindPopup(popup);
   },
   

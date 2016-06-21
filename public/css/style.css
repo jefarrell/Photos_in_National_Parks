@@ -15,7 +15,9 @@ body {
 
 #headerrow {
 	background-color: #000000;
-	font-family: "Times New Roman", serif;
+	/*font-family: "Times New Roman", serif;*/
+	font-family: "source-sans-pro",sans-serif;
+    font-weight: 500;
 	font-size:5em;
 }
 
@@ -64,10 +66,13 @@ div {
 }
 
 .sectHead {
-	font-family: "Times New Roman", serif;
+/*	font-family: "Times New Roman", serif;*/
+	font-family: "source-sans-pro",sans-serif;
 	background-color: #000;
 	color: #FFF;
 	font-style: italic;
+	font-weight:600;
+	letter-spacing: 0.09rem;
 	font-size: 3rem;
 	padding:0.5em;
 	margin-bottom: 0;
@@ -178,7 +183,8 @@ div {
 
 .popupTitle {
 	color: black;
-	font-family: "Times New Roman", serif;
+/*	font-family: "Times New Roman", serif;*/
+	font-family: "source-sans-pro",sans-serif;
 	font-style: italic;
 	font-size: 1.5em;
 	font-weight: bold;
@@ -230,7 +236,8 @@ div {
 #mapCard h4 {
 	text-align: center;
 	color: #000;
-	font-family: "Times New Roman", serif;
+/*	font-family: "Times New Roman", serif;*/
+	font-family: "source-sans-pro",sans-serif;
 	/*font-style: italic;*/
 	font-weight: 600;
 	font-size: 1.75em;
@@ -281,7 +288,8 @@ hr {
 }
 
 #conclusions h2 {
-	font-family: "Times New Roman", serif;
+	/*font-family: "Times New Roman", serif;*/
+	font-family: "source-sans-pro",sans-serif;
 	padding-top:0.5em;
 }
 
@@ -289,11 +297,8 @@ a {
 	color: #7AC043;
 }
 
-.table {
-	font-size: 0.8em;
-	width: 40%;
-	margin-left: auto;
-	margin-right: 0;
+#loc {
+	display:block;
 }
 
 #insideText {
@@ -304,30 +309,21 @@ a {
 	
 }
 
-.table td {
-	/*width: 50%*/;
-	line-height: 0.25;
-}
-
-#testC {
+#insideCont {
 	width: 100%;
 	float:left;
 }
 
 
 .dataTable {
+	font-size: 0.8em;
+	width: 40%;
+	margin-left: auto;
+	margin-right: 0;
 }
 
-.table th {
-	font-family: "Times New Roman", serif;
-	line-height: 0.25em;
-	border: none;
-	font-size: 1.4em;
-}
-
-.tablePark {
-	font-style: italic;
-	font-weight: 500;
+.d3chart {
+	margin: -2em 0 0 0.8em
 }
 
 #footer {

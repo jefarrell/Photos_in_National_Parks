@@ -58,6 +58,12 @@ div {
 	padding: 2em 0em 2em 0em; 
 }
 
+#contentBold {
+	font-weight: 600;
+	background-color: white;
+	color: #101010;
+	padding: 0.5em;
+}
 #content, #explore, #bottom {
 	text-align: center;
 	font-size: 1.3em;
@@ -293,14 +299,13 @@ hr {
 }
 
 #conclusions p {
-	padding-left: 0.5em;
 	font-size: 0.8em;
 }
 
 #conclusions h2 {
 	/*font-family: "Times New Roman", serif;*/
 	font-family: 'Roboto', sans-serif;
-	padding-top:0.5em;
+	margin-top:3em;
 }
 
 a {
@@ -326,6 +331,7 @@ a:hover, a:active {
 #insideCont {
 	width: 100%;
 	float:left;
+	margin-bottom: 2em;
 }
 
 

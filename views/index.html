@@ -13,7 +13,7 @@
 	<script src="bower_components/react/react-dom.min.js" type="text/javascript"></script>
 	<script src="bower_components/babel/browser.min.js" type="text/javascript"></script>
 	<script src="bower_components/d3/d3.min.js" type="text/javascript"></script>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto:500" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600|Roboto:500" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css"/>
 
 </head>
@@ -34,13 +34,12 @@
 			<div class="col-md-2"></div>
 			<div class="col-md-8" id="content">
 				<p>
-					2016 marks the 100th anniversary of the founding of the National Park Service.  The parks continue to grow in popularity, with a record 307 million visitors in 2015.  There are 411 park sites spanning over 84 million acres of US land.  These include historic sites, lake shores, national monuments and, most notably, those sites designated as National Parks.  
+					2016 marks the 100th anniversary of the founding of the National Park Service, a network of over 20,000 employees, volunteers and partners, tasked with protecting the National Parks.  They offer stewardship of the parks, in their words "...engaging communities through recreation, conservation, and historic preservation programs."  
 				</p>
 				<p>
-					The National Parks preserve and protect our most important natural landscapes.  
-					The National Park Service is a network of over 20,000 employees, volunteers and partners, tasked with protecting these lands.  They offer stewardship of the parks, in their words "...engaging communities through recreation, conservation, and historic preservation programs."
-				<p>
-					This project showcases a primary way in which people engage with the parks: through photos.  Photography of the National Parks, immortalized by Ansel Adams, is now often shown socially through Instagram.  In this project, we'll explore over 300,000 photographs, taken by hundreds of thousands of people, related to the parks.  Below are the 10 most popular parks from 2015: choose one and begin exploring how and where people photograph the landscapes of America.  Methodology and more statistics are below.
+					The National Parks continue to grow in popularity, with a record 307 million visitors in 2015.  There are 411 park sites spanning over 84 million acres of US land, highlighted by the 58 National Parks.  This project showcases a primary way in which people engage with the parks: through photos.  Photography of the National Parks, immortalized by Ansel Adams, is now often shown socially through Instagram.  We'll explore over 300,000 photographs, taken by hundreds of thousands of people, related to the parks.  
+				<p id="contentBold">
+					Below are the 10 most popular parks from 2015: choose one and begin exploring how and where people photograph the landscapes of America.
 				</p>
 			
 			</div>
@@ -84,7 +83,7 @@
 			
 			<h1 class="sectHead" id="bottomHead">Data & Conclusions</h1>
 			<div class="col-md-1"></div>
-			<div class="col-md-9" id="conclusions">
+			<div class="col-md-10" id="conclusions">
 				<div class="row">
 
 					<h2>Inside the Numbers</h2>
@@ -93,11 +92,11 @@
 						<div id="insideText">
 							<p>
 								How did those 330,000 posts break 
-								down?  From that original number, xxx posts had location data, or about 50%.  After filtering with geographic boundaries, we're left with 84,696 posts.  The breakdown per park is to the right.
+								down?  From that original number, about 50% had location data.  After filtering with geographic boundaries, we're left with 84,696 posts, roughly 25% of our original count.  The breakdown per park is to the right.
 							</p>
 							<p>
-								There is actually a negative correlation between the parks 2015 rank in popularity and the number of posts that fit out filter.
-								There's several factors that could have influenced these findings.  One is reception - posts without GPS data wouldn't have made it here, so poor coverage could have factored in.  Another is frequency.  Picking a finite amount of posts means that will stretch over different amounts of time per park.   
+								There is actually a negative correlation between the parks 2015 rank in popularity and the number of posts that fit our filter.
+								There's several factors that could have influenced these findings.  One is reception - posts without GPS data wouldn't have made it here, so poor coverage could have factored in.  Another is season.  Picking a finite amount of posts means that will stretch over different amounts of time per park.   
 							</p>
 						</div>
 						<div id="dataTable"></div>
@@ -110,13 +109,7 @@
 						<br />
 						<br />
 						This is data people allow to be shared, but don't always realize it is being shared.  
-						If that makes you uncomfortable, you can turn it off.  <a href="http://www.igeeksblog.com/disable-geotagging-for-photos-on-iphone-ipad/" target="_blank">This guide</a> shows how to disable geotagging on an iPhone.  If you only want to turn off geotagging in Instagram, check <a href="https://instagramtipsandtricks.blogspot.com/p/turn-location-on-or-off.html" target="_blank">go here</a>.
-					</p>
-					
-					<h2>Data Sources</h2>
-					<hr id="hrtest">
-					<p>
-						All data used in this project was gathered through the Instagram API, which provides access to all publicly-available posts.  The data was gathered and parsed in python.  This application is NOT live - collection took place on May 25-26th 2016.  Instagram was announcing big API changes on June 1st, so I opted to collect all data before that date.
+						If that makes you uncomfortable, you can turn it off.  <a href="http://www.igeeksblog.com/disable-geotagging-for-photos-on-iphone-ipad/" target="_blank">This guide</a> shows how to disable geotagging on an iPhone.  If you only want to turn off geotagging in Instagram, <a href="https://instagramtipsandtricks.blogspot.com/p/turn-location-on-or-off.html" target="_blank">go here</a>.
 					</p>
 					
 					<h2>Methodology</h2>
@@ -125,11 +118,17 @@
 						The 10 parks chosen were the 10 most popular parks of 2015, ranked by total visitors.
 						<br />
 						<br />
-						The best method I found was to search by popular hashtags used in relation to each specific park.  Gathering posts with a specific location tag (e.g. posts tagged at "Yellowstone National Park") results in all posts showing up at the same location marker.  So after finding the popular hashtags for each park, I gathered 33,000 posts per park, for a total of 330,000.  The dataset was filtered to remove posts that did not include location data, which averaged to about half (or ~16,000) of the posts.  I then used Shape files, provided by <a href="https://catalog.data.gov/dataset/national-park-boundariesf0a4c" target="_blank">data.gov</a>, of the National Park boundaries.  Using these boundaries, I could eliminate any posts that were not taken within the geographic boundaries of the parks themselves. 
+						Gathering posts with a specific location tag (e.g. posts tagged at "Yellowstone National Park") results in all posts showing up at the same location marker.  The best method I found was to search by popular hashtags used in relation to each specific park.  After finding the tags for each park, I gathered 33,000 posts per park, for a total of 330,000.  The dataset was filtered to remove posts that did not include location data.  I then used Shape files, provided by <a href="https://catalog.data.gov/dataset/national-park-boundariesf0a4c" target="_blank">data.gov</a>, of the National Park boundaries.  Using these boundaries, I could eliminate any posts that were not taken within the geographic boundaries of the parks themselves. 
 						<br />
 						<br />
-						Was that the right method?  I don't know, probably not.  But it was the best approach I found.  I'd love to hear if you have a better way.
+						Was that the right method?  I don't know, there are certainly problems with it.  But it was the best approach I found.  I'd love to hear if you have a better way.
 					</p>
+
+					<h2>Data Sources</h2>
+					<hr id="hrtest">
+					<p>
+						All data used in this project was gathered through the <a href="instagram.com/developer" target="_blank">Instagram API</a>, which provides access to all publicly-available posts.  The data was gathered and parsed in python.  This application is NOT live - collection took place on May 25-26th 2016.  Instagram was announcing big API changes on June 1st, so I opted to collect all data before that date.
+					</p>				
 
 					<h2>Technical Explanations</h2>
 					<hr id="hrtest">
@@ -142,7 +141,7 @@
 
 				<!-- </div> --> <!-- testC -->
 				</div>
-				<div class="col-md-2"></div>
+				<div class="col-md-1"></div>
 				
 				</div>
 			</div>

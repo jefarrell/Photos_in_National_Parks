@@ -18,7 +18,12 @@ config.tileLayer = {
   }
 };
 
+// Resize the map correctly when the window is changing
+$(window).resize(function() {
+    $("#map").height($(window).height()).width($(window).width());
+});
 
+// State of the map drives both the Map view and the Card information
 var Map = React.createClass({
   getInitialState: function() {
     return {
@@ -37,18 +42,16 @@ var Map = React.createClass({
     };
   },
 
-
+  // Build our map once component mounts to DOM
   componentDidMount: function() {
-
-    // code to run just after adding the map to the DOM
-    // instantiate the Leaflet map object
     this.init(this.getID());
   },
 
-
+  // Receive new props from button clicks
   componentWillReceiveProps: function(newProps) {
-    // Update state and reset map as we receive new props from button clicks
+    // First, get data to populate map
     this.getData(newProps.parkAbv);
+    // Then update state with new props
     this.setState({
       lat: newProps.parkLat,
       lon: newProps.parkLon,
@@ -60,11 +63,11 @@ var Map = React.createClass({
       states: newProps.states,
       est: newProps.est
     });
-
+    // Reset map view based on our new props
     map.setView([newProps.parkLat, newProps.parkLon], newProps.parkZoom);
   },
 
-  // load up appropriate geojson file, then call addData
+  // Load up appropriate geojson file as designated by new props, then call addData
   getData: function(parkAbv) {
     var self = this;
     qwest.get(parkAbv+'.geojson',null,{responseType:'json'})
@@ -75,8 +78,8 @@ var Map = React.createClass({
       });  
   },
 
-  // add data from geojson file to the map
-  // also clear old data if applicable
+  // Add data from geojson file to the map
+  // Also clear old data if applicable
   addData: function(data) {
     this.state.geojson = data;
 
@@ -90,10 +93,9 @@ var Map = React.createClass({
         pointToLayer: this.pointToLayer
       }).addTo(map);
     }
-    // zoom to feature here?
   },
 
-  // set stylings for individual markers
+  // Set stylings for individual markers
   pointToLayer: function(feature, latlng) {
 
     var markerParams = {
@@ -107,8 +109,8 @@ var Map = React.createClass({
     return L.circleMarker(latlng, markerParams);
   },
 
-  // make a popup for each marker
-  // it's going to load a photo from a url and show some user data
+  // Make a popup for each marker
+  // It's going to load a photo from a url and show some user data
   onEachFeature: function(feature, layer) {
 
     var popup = '<img id="popupPic" src='+feature.properties.photo + '><br />' +
@@ -117,13 +119,14 @@ var Map = React.createClass({
     layer.bindPopup(popup);
   },
   
-
+  // Grab the ID of the DOM element where we want to make the map
   getID: function() {
     return ReactDOM.findDOMNode(this).querySelectorAll('#map')[0];
   },
 
-  // make the map
+  // Make the map
   init: function(id) {
+    // Make geographic bounding box
     var southWest = L.latLng(25.0855988971, -132.01171875);
     var northEast = L.latLng(49.8096315636, -65.91796875);
     var bounds = L.latLngBounds(southWest, northEast);
@@ -135,7 +138,7 @@ var Map = React.createClass({
     map.scrollWheelZoom.disable();
     L.control.scale({ position: "bottomleft"}).addTo(map);
     
-    // set our state to include the tile layer
+    // Set our state to include the tile layer
     this.state.tileLayer = L.tileLayer(config.tileLayer.uri, config.tileLayer.params).addTo(map);
 
     this.setState({

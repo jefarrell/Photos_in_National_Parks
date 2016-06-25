@@ -3,19 +3,18 @@ html {
 }
 
 body {
-	background-color: #3C5F36;
+	background-color: #101010;
 	color: white;
 	font-family: 'Open Sans', sans-serif;
   	font-weight: 300;
 }
 
 #frame {
-	background-color: #3C5F36;
+	background-color: #101010;
 }
 
 #headerrow {
 	background-color: #101010;
-	/*font-family: "Times New Roman", serif;*/
 	font-family: 'Roboto', sans-serif;
     font-weight: 500;
 	font-size:5em;
@@ -30,16 +29,18 @@ div {
 	text-align: left;
 	display:inline;
 	float:left;
-	padding: 2%;
+	padding: 5% 2% 2% 5%;
 	vertical-align: middle;
 	color: #FFF;
 	line-height: 110%;
+	letter-spacing: 0.01em;
+	text-transform: uppercase;
 	/*background-color: red;*/ /* DEBUG */
 }
 
 #arrowhead {
 	float: right;
-	margin: 2% 2% 2% 0;
+	margin: 2% 5% 2% 0;
 	max-width: 100%;
 	height:auto;
 	width:15%;
@@ -50,8 +51,18 @@ div {
 	background-image: url("../imgs/header.jpg");
 	background-size: cover;
 	position: relative;
-/*	-webkit-filter: blur(3px);
-	filter: blur(3px);*/
+	background-attachment: fixed;
+    background-position: bottom;
+}
+
+#overlay {
+	position: absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color: #000;
+	opacity:0.7;
 }
 
 #content {
@@ -72,15 +83,15 @@ div {
 }
 
 .sectHead {
-/*	font-family: "Times New Roman", serif;*/
 	font-family: 'Roboto', sans-serif;
 	background-color: #101010;
 	color: #FFF;	
 	font-weight:500;
-	letter-spacing: 0.09rem;
 	font-size: 3rem;
 	padding:0.5em;
 	margin-bottom: 0;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
 }
 
 #explore {
@@ -100,15 +111,6 @@ div {
 	margin-top: 0.5rem;
 }
 
-#overlay {
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	background-color: #000;
-	opacity:0.7;
-}
 
 /* keep map/info rows the same height */
 #infoRow {
@@ -168,19 +170,22 @@ div {
 
 #mapContainer {
 	font-size: 25px;
-	padding: 0 0 0 0;
+	padding: 0.5em 0.5em 0 0.5em;
 }
 
 #infoContainer {
 	font-size: 16px;
 }
 
-/* Need some media queries to resize */
+
 #map {
 	height:600px;
-	width:auto;
+	width:100%;
 }
-
+#mapUI {
+	height:100%;
+	width:100%;
+}
 .popup {
 	color: black;
 	font-size: 1.25em;
@@ -191,19 +196,11 @@ div {
 	font-weight:600;
 }
 
-/*.popupTitle {
-	color: black;
-	font-family: 'Roboto', sans-serif;
-	font-style: italic;
-	font-size: 1.5em;
-	font-weight: bold;
-}*/
-
 #popupPic {
 	width:250px;
 	height:auto;
-	/*border: 2px solid #3C5F36 ;*/  /*Not sure if this looks ok..*/
 }
+
 .leaflet-container a.leaflet-popup-close-button {
 	color: #757575;
 }
@@ -246,7 +243,6 @@ div {
 #mapCard h4 {
 	text-align: center;
 	color: #000;
-/*	font-family: "Times New Roman", serif;*/
 	font-family: 'Roboto', sans-serif;
 	font-weight: 500;
 	font-size: 1.75em;
@@ -303,7 +299,6 @@ hr {
 }
 
 #conclusions h2 {
-	/*font-family: "Times New Roman", serif;*/
 	font-family: 'Roboto', sans-serif;
 	margin-top:3em;
 }
@@ -343,24 +338,27 @@ a:hover, a:active {
 }
 
 .d3chart {
-	margin: -2em 0 0 0.8em
+	float: right;
+    margin: -2em 0 0 auto;
 }
 
 #footer {
-	margin-top:1%;
+	margin:1%;
 	font-size: 0.8em;
 }
 
 #footer p {
 	margin-bottom: 0;
 }
-@media (max-width: 775px) {
-	body {
-		background-color: red;
-	}
 
-	#map {
-		width:200px;
-		height:auto;
+
+
+@media (max-width: 970px) {
+	.d3chart {
+		float: left;
+		margin: 0;
+	}
+	.row {
+		margin-left: 1%;
 	}
 }

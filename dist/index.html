@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset = "UTF-8">
-	<title> National Parks </title>
+	<title> Photos in the National Parks </title>
 
 	<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 	<script src="bower_components/leaflet/dist/leaflet.js" type="text/javascript"></script>
@@ -12,6 +12,7 @@
 	<script src="bower_components/react/react-with-addons.min.js" type="text/javascript"></script>
 	<script src="bower_components/react/react-dom.min.js" type="text/javascript"></script>
 	<script src="bower_components/babel/browser.min.js" type="text/javascript"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
 	<script src="bower_components/d3/d3.min.js" type="text/javascript"></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600|Roboto:500" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css"/>
@@ -20,32 +21,33 @@
 
 <body>
 
-	<div class="container" id="frame">
-
+	<div id="frame">
+		<!-- Site header -->
 		<div class="row" id="headerrow">
 			<div class="col-md-12">
 			<span href="#" id="title"> Photos in the<br>National Parks </span> 
 			<img src="/imgs/arrowhead.svg" alt="arrowhead logo" id="arrowhead" class="img-responsive">
 			</div>
 		</div>
-
-		<div class="row" id="intro">
-			<div id="overlay"></div>	
-			<div class="col-md-2"></div>
-			<div class="col-md-8" id="content">
-				<p>
-					2016 marks the 100th anniversary of the founding of the National Park Service, a network of over 20,000 employees, volunteers and partners, tasked with protecting the National Parks.  They offer stewardship of the parks, in their words "...engaging communities through recreation, conservation, and historic preservation programs."  
-				</p>
-				<p>
-					The National Parks continue to grow in popularity, with a record 307 million visitors in 2015.  There are 411 park sites spanning over 84 million acres of US land, highlighted by the 58 National Parks.  This project showcases a primary way in which people engage with the parks: through photos.  Photography of the National Parks, immortalized by Ansel Adams, is now often shown socially through Instagram.  We'll explore over 300,000 photographs, taken by hundreds of thousands of people, related to the parks.  
-				<p id="contentBold">
-					Below are the 10 most popular parks from 2015: choose one and begin exploring how and where people photograph the landscapes of America.
-				</p>
-			
+		<!-- Introduction Paragraphs -->
+		<!-- <div id="overlay"> -->
+			<div class="row" id="intro">
+				<div id="overlay"></div>	
+				<div class="col-md-2"></div>
+				<div class="col-md-8" id="content">
+					<p>
+						2016 marks the 100th anniversary of the founding of the National Park Service, a network of over 20,000 employees, volunteers and partners, tasked with protecting the National Parks.  They offer stewardship of the parks, in their words "...engaging communities through recreation, conservation, and historic preservation programs."  
+					</p>
+					<p>
+						The National Parks continue to grow in popularity, with a record 307 million visitors in 2015.  There are 411 park sites spanning over 84 million acres of US land, highlighted by the 58 National Parks.  This project showcases a primary way in which people engage with the parks: through photos.  Photography of the National Parks, immortalized by Ansel Adams, is now often shown socially through Instagram.  We'll explore over 300,000 photographs, taken by hundreds of thousands of people, related to the parks.  
+					<p id="contentBold">
+						Below are the 10 most popular parks from 2015: choose one and begin exploring how and where people photograph the landscapes of America.
+					</p>
+				
+				</div>
+				<div class="col-md-2"></div>
 			</div>
-			<div class="col-md-2"></div>
-		</div>
-
+		<!-- </div> -->
 		<div class="row"> 
 			<div class="col-md-12" id="explore">
 				<h1 class="sectHead">Explore a Park</h1>
@@ -102,52 +104,24 @@
 						<div id="dataTable"></div>
 					</div>
 					
-					<h2>Where Did the Locations Come From?</h2>
-					<hr id="hrtest">
-					<p>
-						Location data in photos comes from the GPS in your phone in a process called geotagging.  That data is then picked up in Instagram.  This means our data is limited to photos taken where GPS was available.
-						<br />
-						<br />
-						This is data people allow to be shared, but don't always realize it is being shared.  
-						If that makes you uncomfortable, you can turn it off.  <a href="http://www.igeeksblog.com/disable-geotagging-for-photos-on-iphone-ipad/" target="_blank">This guide</a> shows how to disable geotagging on an iPhone.  If you only want to turn off geotagging in Instagram, <a href="https://instagramtipsandtricks.blogspot.com/p/turn-location-on-or-off.html" target="_blank">go here</a>.
-					</p>
-					
-					<h2>Methodology</h2>
-					<hr id="hrtest">
-					<p>
-						The 10 parks chosen were the 10 most popular parks of 2015, ranked by total visitors.
-						<br />
-						<br />
-						Gathering posts with a specific location tag (e.g. posts tagged at "Yellowstone National Park") results in all posts showing up at the same location marker.  The best method I found was to search by popular hashtags used in relation to each specific park.  After finding the tags for each park, I gathered 33,000 posts per park, for a total of 330,000.  The dataset was filtered to remove posts that did not include location data.  I then used Shape files, provided by <a href="https://catalog.data.gov/dataset/national-park-boundariesf0a4c" target="_blank">data.gov</a>, of the National Park boundaries.  Using these boundaries, I could eliminate any posts that were not taken within the geographic boundaries of the parks themselves. 
-						<br />
-						<br />
-						Was that the right method?  I don't know, there are certainly problems with it.  But it was the best approach I found.  I'd love to hear if you have a better way.
-					</p>
-
-					<h2>Data Sources</h2>
-					<hr id="hrtest">
-					<p>
-						All data used in this project was gathered through the <a href="instagram.com/developer" target="_blank">Instagram API</a>, which provides access to all publicly-available posts.  The data was gathered and parsed in python.  This application is NOT live - collection took place on May 25-26th 2016.  Instagram was announcing big API changes on June 1st, so I opted to collect all data before that date.
-					</p>				
 
 					<h2>Technical Explanations</h2>
 					<hr id="hrtest">
 					<p>
+						If you're interested in the methods for collecting and parsing the data, I have an iPython notebook available on github here.  It walks through the specifics of data was collected, how it was filtered, and how it was formatted for display here.
+						<br />
+						<br />
 						The code for this site is on github <a href="https://github.com/jefarrell/National_Park_Visualization" target="_blank">here</a>.
-						<br />
-						<br />
-						My methods for collecting and parsing the data are also available in iPython notebooks on github here.
 					</p>
 
-				<!-- </div> --> <!-- testC -->
 				</div>
 				<div class="col-md-1"></div>
 				
 				</div>
 			</div>
 			<div class="row">
-				<!-- <div class="col-md-2"></div> -->
-				<div class="col-md-12" id="footer"> 
+				<div class="col-md-12" id="footer">
+					<p> Arrowhead logo courtest of  
 					<p> Header image courtesy of <a href="https://www.flickr.com/photos/ddebold/" target="_blank">Don DebBold</a> on Flickr via Creative Commons License. </p>
 					<p> All data was accessed through the Instagram API and was publicly available. </p>
 				</div>

@@ -3,7 +3,7 @@
 // https://github.com/clhenrick/React-Leaflet-demo/blob/master/src/js/Map.js
 var Card = require('./Card');
 var L = require('leaflet');
-var qwest = require('qwest');
+var moment = require('moment');
 var map;
 var info;
 var config = {};
@@ -22,6 +22,24 @@ config.tileLayer = {
 $(window).resize(function() {
     $("#map").height($(window).height()).width($(window).width());
 });
+
+
+// Make a status spinner for use when loading data
+var opts = {
+  lines: 13,
+  length:28,
+  color:'#FFF',
+  zIndex:2e9,
+  className: 'spinner',
+  left: '50%',
+  top: '50%',
+  Hwaccel: true
+};
+
+var s = new Spinner(opts); 
+$('#loader').after(s.spin().el); s
+$('.spinner').hide();
+
 
 // State of the map drives both the Map view and the Card information
 var Map = React.createClass({
@@ -69,13 +87,13 @@ var Map = React.createClass({
 
   // Load up appropriate geojson file as designated by new props, then call addData
   getData: function(parkAbv) {
+   $('.spinner').show()
     var self = this;
-    qwest.get(parkAbv+'.geojson',null,{responseType:'json'})
-      .then(function(xhr,res) {
-        self.addData(res);
-      }).catch(function(xhr, res, e) {
-        console.log('qwest map catch: ', xhr, res, e);
-      });  
+    $.getJSON(parkAbv+'.geojson', function(data) {
+      self.addData(data)
+    }).done(function(){
+      $('.spinner').hide();
+    }); 
   },
 
   // Add data from geojson file to the map
@@ -112,10 +130,10 @@ var Map = React.createClass({
   // Make a popup for each marker
   // It's going to load a photo from a url and show some user data
   onEachFeature: function(feature, layer) {
-
+    var postDate = moment(feature.properties.time).format('MMMM Do, YYYY');
     var popup = '<img id="popupPic" src='+feature.properties.photo + '><br />' +
                 '<span class="popup" id="popupUser"><a href="http://www.instagram.com/'+ feature.properties.user+'" target="_blank" >@' + feature.properties.user + '</a></span> <br />'
-              +   '<span class="popup">' + feature.properties.time +'</span>' ;
+              +   '<span class="popup">' + postDate +'</span>' ;
     layer.bindPopup(popup);
   },
   
@@ -133,6 +151,7 @@ var Map = React.createClass({
 
     map = L.map(id, {
       maxBounds: bounds,
+      maxZoom: 16,
       minZoom: 4
     }).setView([this.state.lat, this.state.lon], this.state.zoom)
     map.scrollWheelZoom.disable();

@@ -119,6 +119,7 @@ div {
 	display: -ms-flexbox;
 	display: flex;
 	flex-wrap: wrap;
+	position:relative;
 }
 
 .btn-group {
@@ -175,6 +176,12 @@ div {
 
 #infoContainer {
 	font-size: 16px;
+}
+
+#loader {
+	position: absolute;
+	width:100%;
+	height:100%;
 }
 
 

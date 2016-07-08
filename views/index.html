@@ -15,9 +15,8 @@
 	<script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
 	<script src="bower_components/d3/d3.min.js" type="text/javascript"></script>
 	<script src="bower_components/spin.js/spin.min.js" type="text/javascript"></script>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600|Roboto:500" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css"/>
-
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto:500,400" rel="stylesheet">
 </head>
 
 <body>
@@ -25,28 +24,33 @@
 	<div id="frame">
 		<!-- Site header -->
 		<div class="row" id="headerrow">
-			<div class="col-md-12">
-			<span href="#" id="title"> Photos in the<br>National Parks </span> 
-			<img src="/imgs/arrowhead.svg" alt="arrowhead logo" id="arrowhead" class="img-responsive">
+			<div class="col-md-1"></div>
+			<div class="col-md-10" id="titleCol">
+				<span href="#" id="title"> Photos in the<br>National Parks </span> 
+				<img src="/imgs/arrowhead.svg" alt="arrowhead logo" id="arrowhead" class="img-responsive">
 			</div>
+			<div class="col-md-1"></div>
 		</div>
 		<!-- Introduction Paragraphs -->
 		<!-- <div id="overlay"> -->
 			<div class="row" id="intro">
 				<div id="overlay"></div>	
-				<div class="col-md-2"></div>
-				<div class="col-md-8" id="content">
+				<div class="col-md-1"></div>
+				<div class="col-md-10" id="content">
 					<p>
 						2016 marks the 100th anniversary of the founding of the National Park Service, a network of over 20,000 employees, volunteers and partners, tasked with protecting the National Parks.  They offer stewardship of the parks, in their words "...engaging communities through recreation, conservation, and historic preservation programs."  
 					</p>
+					<br />
 					<p>
-						The National Parks continue to grow in popularity, with a record 307 million visitors in 2015.  There are 411 park sites spanning over 84 million acres of US land, highlighted by the 58 National Parks.  This project showcases a primary way in which people engage with the parks: through photos.  Photography of the National Parks, immortalized by Ansel Adams, is now often shown socially through Instagram.  We'll explore over 300,000 photographs, taken by hundreds of thousands of people, related to the parks.  
+						The National Parks continue to grow in popularity, with a record 307 million visitors in 2015.  There are 411 park sites spanning over 84 million acres of US land, highlighted by the 58 National Parks.  This project showcases a primary way in which people engage with the parks: through photos.  Photography of the National Parks, immortalized by Ansel Adams, is now often shown socially through Instagram.  We'll explore over 300,000 photographs, taken by hundreds of thousands of people, related to the parks. 
+					</p>
+					<br /> 
 					<p id="contentBold">
-						Below are the 10 most popular parks from 2015: Choose one and begin exploring how and where people photograph the landscapes of America.
+						Below are the 10 most popular parks from 2015. <br />Choose one and begin exploring how and where people photograph the landscapes of America.
 					</p>
 				
 				</div>
-				<div class="col-md-2"></div>
+				<div class="col-md-1"></div>
 			</div>
 		<!-- </div> -->
 		<div class="row"> 
@@ -94,41 +98,54 @@
 				<div class="row">
 
 					<h2>Inside the Numbers</h2>
-					<hr id="hrtest">
+					<hr id="bottomhr">
 					<div id="insideCont">
 						<div id="insideText">
 							<p>
 								How did those 330,000 posts break 
-								down?  From that original number, about 50% had location data.  After filtering with geographic boundaries, we're left with 84,696 posts, roughly 25% of our original count.  The breakdown per park is to the right.
+								down?  From the original number, about 50% had location data.  Those posts were filtered again to include only locations within the geographic boundaries of each park.  That left us with 84,796 posts, roughly 25% of the original count.  The breakdown per park is to the right.
 							</p>
 							<p>
 								There is actually a negative correlation between the parks 2015 rank in popularity and the number of posts that fit our filter.
-								There's several factors that could have influenced these findings.  One is reception - posts without GPS data wouldn't have made it here, so poor coverage could have factored in.  Another is season.  Picking a finite amount of posts means that will stretch over different amounts of time per park.   
+								There's several factors that could have influenced these findings.  One is reception - posts without GPS data wouldn't have made it here.  National Parks tend to be remote areas, so poor coverage could have factored in.  Another is season.  Picking a finite amount of posts means that will stretch over different amounts of time per park.  Below, you can see a sampling of one week's worth of posts to see how frequently certain parks are mentioned.  For more detail about this, see  "Technical Explanations".  
 							</p>
 						</div>
 						<div id="dataTable"></div>
 					</div>
+			</div>
+			<div class="row">
+					<div id="lineContainer">
+						<div id="lineChart"></div>
+					</div>
 					
 
 					<h2>Technical Explanations</h2>
-					<hr id="hrtest">
+					<hr id="bottomhr">
 					<p>
-						If you're interested in the methods for collecting and parsing the data, I have an iPython notebook available on github here.  It walks through the specifics of data was collected, how it was filtered, and how it was formatted for display here.
+						There was a good bit of work that went into finding this data, and getting it ready to display here.  If you're interested in the methods for collecting and parsing the data, I have an iPython notebook <a href="https://github.com/jefarrell/Mapping_Instagram_Data/blob/master/Mapping_Instagram_Data.ipynb">available on github</a>.  It walks through the specifics of what data was collected, how it was filtered, and how it was formatted for display here.
 						<br />
 						<br />
 						The code for this site is on github <a href="https://github.com/jefarrell/National_Park_Visualization" target="_blank">here</a>.
 					</p>
-
-				</div>
-				<div class="col-md-1"></div>
-				
-				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12" id="footer">
+					<h2>Made By</h2>
+					<hr id="bottomhr">
+					<p>
+						This project was created by John Farrell.  He is a Brooklyn-based developer & designer.  He holds a Masters degree from the <a href="http://tisch.nyu.edu/itp/" target="_blank">Interactive Telecommunications Program</a> at NYU, where he has been serving as a Research Fellow.  Check out his <a href="https://www.jefarrell.com" target="_blank">website</a>.
+					</p>
+
+				</div>
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-10" id="footer">
 					<p> Header image courtesy of <a href="https://www.flickr.com/photos/ddebold/" target="_blank">Don DebBold</a> on Flickr via Creative Commons License. </p>
 					<p> All data was accessed through the Instagram API and was publicly available. </p>
 				</div>
+				<div class="col-md-1"></div>
 			</div>
 		</div>
 	<script src="src/build.js"></script> 

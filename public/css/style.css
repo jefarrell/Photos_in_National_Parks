@@ -16,7 +16,7 @@ body {
 #headerrow {
 	background-color: #101010;
 	font-family: 'Roboto', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
 	font-size:5em;
 }
 
@@ -26,21 +26,27 @@ div {
 }
 
 #title {
+
 	text-align: left;
 	display:inline;
 	float:left;
-	padding: 5% 2% 2% 5%;
+	padding: 2% 2% 2% 0;
 	vertical-align: middle;
 	color: #FFF;
 	line-height: 110%;
 	letter-spacing: 0.01em;
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 	/*background-color: red;*/ /* DEBUG */
 }
 
+#titleCol {
+	padding: 0.5em 0 0.5em 0;
+}
+
 #arrowhead {
+	display: none;
 	float: right;
-	margin: 2% 5% 2% 0;
+	margin: 2% 0 2% 0;
 	max-width: 100%;
 	height:auto;
 	width:15%;
@@ -66,17 +72,17 @@ div {
 }
 
 #content {
-	padding: 2em 0em 2em 0em; 
+	padding: 2em 0em 3em 0em; 
 }
 
 #contentBold {
-	font-weight: 600;
-	background-color: white;
-	color: #101010;
-	padding: 0.5em;
+	text-align: center;
+	font-weight: 500;
+	background-color: rgba(255,255,255,0.5);
+	color: #FFF;
+	padding: 0.5em 0.5em 0.5em 1em;
 }
 #content, #explore, #bottom {
-	text-align: center;
 	font-size: 1.3em;
 	color: #FFF;
 	z-index: 99;
@@ -98,6 +104,7 @@ div {
 	border-top:0.25rem solid #FFF;
 	padding-left: 0;
 	padding-right: 0;
+	text-align: center;
 }
 
 #bottom {
@@ -105,11 +112,13 @@ div {
 	border-top: 0.25rem solid #FFF;
 	background-color: #101010;
 	padding-bottom:3em;
+	text-align: center;
 }
 
 #explore, #bottom h1 {
 	margin-top: 0.5rem;
 }
+
 
 
 /* keep map/info rows the same height */
@@ -201,6 +210,16 @@ div {
 
 #popupUser {
 	font-weight:600;
+	text-decoration: underline;
+}
+
+#mag {
+	width: 10px;
+	height: auto;
+}
+
+.leaflet-popup-content a:hover {
+	color: #7AC043;
 }
 
 #popupPic {
@@ -265,7 +284,7 @@ hr {
 	height: 0.2em;
 }
 
-#hrtest {
+#bottomhr {
 	margin-top: 0;
 	margin-bottom: 0.5em;
 	color: #FFF;
@@ -350,14 +369,51 @@ a:hover, a:active {
 }
 
 #footer {
-	margin:1%;
+	margin:1% 0 1% 0;
 	font-size: 0.8em;
+	padding: 0;
 }
 
 #footer p {
 	margin-bottom: 0;
 }
 
+/* line chart */
+#lineChartSVG {
+	margin-left: 3em;
+}
+
+.lineAxis path,
+.lineAxis line {
+  fill: none;
+  stroke: #FFF;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.lineChartLines {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.legendText{
+	fill: #FFF;
+	font-size: 0.5em;
+}
+
+#lineAxis {
+	stroke: #FFF;
+}
+
+#lineChart text {
+	fill: #FFF;
+	font-size: 0.5em
+}
+/*         */
 
 
 @media (max-width: 970px) {

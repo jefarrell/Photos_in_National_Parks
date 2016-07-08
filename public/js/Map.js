@@ -132,8 +132,11 @@ var Map = React.createClass({
   onEachFeature: function(feature, layer) {
     var postDate = moment(feature.properties.time).format('MMMM Do, YYYY');
     var popup = '<img id="popupPic" src='+feature.properties.photo + '><br />' +
-                '<span class="popup" id="popupUser"><a href="http://www.instagram.com/'+ feature.properties.user+'" target="_blank" >@' + feature.properties.user + '</a></span> <br />'
+                '<span class="popup" id="popupUser"><a href="http://www.instagram.com/' + 
+                feature.properties.user+'" target="_blank" >@' + feature.properties.user + 
+                '</a></span> <br />'
               +   '<span class="popup">' + postDate +'</span>' ;
+
     layer.bindPopup(popup);
   },
   

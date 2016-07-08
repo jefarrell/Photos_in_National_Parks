@@ -1,26 +1,12 @@
-// transition down to anchor on button click
-// var cont = document.getElementById('buttonContainer');
-// var dest = document.getElementById('explore');
+//// D3 Charts
 
-// function scrollTo(element, to, duration) {
-// 	if (duration <= 0) return;
-// 	var difference =  to - element.scrollTop;
-// 	var perTick = difference / duration*10;
+/*
 
-// 	setTimeout(function() {
-// 		element.scrollTop = element.scrollTop + perTick;
-// 		if (element.scrollTop === to) return;
-// 		scrollTo(element, to, duration-10);
-// 	}, 10);
-// }
+  Bar Chart
 
-// cont.onclick = function() {
-// 	scrollTo(document.body, dest.offsetTop, 700);
-// }
+*/
 
-//// d3 part /~ def not original ~/
-//set up canvas and bar sizes
-var canvasWidth = 420,
+var canvasWidth = 430,
     canvasHeight = 350,
     otherMargins = canvasWidth * 0.1,
     leftMargin = canvasWidth * 0.25,
@@ -163,6 +149,134 @@ d3.csv("photocount.csv").get(function (error, data) {
           .attr("font-weight", "bold")
           .attr("fill", "white")
           .text("Photo Count per Park");
+});
+
+
+
+/*
+
+  Line Chart
+
+*/
+
+var Colors = ["#a6cee3","#1f78b4","#b2df8a","#33a02c","#f0027f",
+              "#e31a1c","#ff7f00","#984ea3","#ffff33","#b15928"]
+
+var margin={top: 20, right: 80, bottom:30, left:50},
+  width=860-margin.left-margin.right,
+  height=350-margin.top-margin.bottom;
+
+var parseDate = d3.time.format("%Y-%m-%d").parse
+
+var x = d3.time.scale()
+  .range([0, width-30]);
+
+var y = d3.scale.linear()
+  .range([height, 0]);
+
+var color = d3.scale.category10();
+
+var lineXaxis = d3.svg.axis()
+  .scale(x)
+  .orient("bottom")
+  .ticks(7);
+
+var lineYaxis = d3.svg.axis()
+  .scale(y)
+  .orient("left");
+
+var line = d3.svg.line()
+  .interpolate("basis")
+  .x(function(d) {return x(d.date); })
+  .y(function(d) {return y(d.count); })
+
+
+
+var svg = d3.select("#lineChart").append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+  .attr("id", "lineChartSVG")
+  .append("g")
+  .attr("transform", "translate("+margin.left+","+margin.top+")");
+
+
+d3.csv("park_week_data.csv",function(error,data) {
+  if (error) throw error;
+
+  color.domain(d3.keys(data[0]).filter(function(key) {
+    return key !== "date";
+  }));
+
+  data.forEach(function(d) {
+    d.date = parseDate(d.date);
+  });
+
+  var parks = color.domain().map(function(name) {
+    return {
+      name: name,
+      values: data.map(function(d) {
+        return {date: d.date, count: +d[name]};
+      })
+    };
+  });
+
+  x.domain(d3.extent(data, function(d) {return d.date;}));
+
+  y.domain([
+    d3.min(parks, function(c){return d3.min(c.values, function(v){
+      return v.count;
+      });
+    }),
+    d3.max(parks, function(c){return d3.max(c.values, function(v){
+      return v.count;
+      });
+    })
+  ]);
+
+  var legend = svg.selectAll('g')
+      .data(parks)
+      .enter().append('g')
+      .attr('class', 'legend');
+    
+  legend.append('rect')
+      .attr('x', width - 20)
+      .attr('y', function(d, i){ return i *  20;})
+      .attr('width', 10)
+      .attr('height', 10)
+      .style('fill', function(d,i) { return Colors[i]; });
+      
+  legend.append('text')
+      .attr("class", "legendText")
+      .attr('x', width - 8)
+      .attr('y', function(d, i){ return (i *  20) + 9;})
+      .text(function(d){ return d.name; });
+
+  svg.append("g")
+      .attr("class", "lineAxis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(lineXaxis);
+
+  svg.append("g")
+      .attr("class", "lineAxis")
+      .call(lineYaxis)
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("class", "legendText")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Posts per Day");
+
+  var park = svg.selectAll(".park")
+      .data(parks)
+      .enter().append("g")
+      .attr("class", "park");
+
+  park.append("path")
+      .attr("class", "lineChartLines")
+      .attr("id", function(d){ return d.name.split(" ").join("-"); })
+      .attr("d", function(d) { return line(d.values); })
+      .style("stroke", function(d,i) { return Colors[i]; });
 
 
 });

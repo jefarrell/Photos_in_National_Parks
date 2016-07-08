@@ -179,7 +179,8 @@ var color = d3.scale.category10();
 var lineXaxis = d3.svg.axis()
   .scale(x)
   .orient("bottom")
-  .ticks(7);
+  .ticks(7)
+  .tickFormat(d3.time.format("%B %d, %Y"));;
 
 var lineYaxis = d3.svg.axis()
   .scale(y)

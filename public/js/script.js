@@ -134,10 +134,8 @@ d3.csv("photocount.csv").get(function (error, data) {
         .style("shape-rendering", "crispEdges")
         .call(yAxis)
         .selectAll("text")
-          //.attr("dx", "-1.15em")
           .attr("stroke", "none")
           .attr("fill", "white")
-          //.call(yScale.rangeBand()); //calls wrap function below
 
     //x axis title        
     chart.append("text")
@@ -148,7 +146,7 @@ d3.csv("photocount.csv").get(function (error, data) {
           .attr("font-size", "14px")
           .attr("font-weight", "bold")
           .attr("fill", "white")
-          .text("Photo Count per Park");
+          .text("Available Photos per Park");
 });
 
 
@@ -158,12 +156,17 @@ d3.csv("photocount.csv").get(function (error, data) {
   Line Chart
 
 */
+d3.selection.prototype.moveToFront = function() {
+  return this.each(function(){
+    this.parentNode.appendChild(this);
+  });
+};
 
 var Colors = ["#a6cee3","#1f78b4","#b2df8a","#33a02c","#f0027f",
               "#e31a1c","#ff7f00","#984ea3","#ffff33","#b15928"]
 
 var margin={top: 20, right: 80, bottom:30, left:50},
-  width=860-margin.left-margin.right,
+  width=870-margin.left-margin.right,
   height=350-margin.top-margin.bottom;
 
 var parseDate = d3.time.format("%Y-%m-%d").parse
@@ -242,13 +245,21 @@ d3.csv("park_week_data.csv",function(error,data) {
   legend.append('rect')
       .attr('x', width - 20)
       .attr('y', function(d, i){ return i *  20;})
-      .attr('width', 10)
-      .attr('height', 10)
-      .style('fill', function(d,i) { return Colors[i]; });
+      .attr('width', 15)
+      .attr('height', 15)
+      .style('fill', function(d,i) { return Colors[i]; })
+      .on("mouseover", function(d) {
+        var nameString = "#"+d.name.split(" ").join("-");
+        d3.select(nameString).style("stroke-width", 7);
+      })
+      .on("mouseout", function(d){
+        var nameString = "#"+d.name.split(" ").join("-");
+        d3.select(nameString).style("stroke-width", 1);
+      });
       
   legend.append('text')
       .attr("class", "legendText")
-      .attr('x', width - 8)
+      .attr('x', width)
       .attr('y', function(d, i){ return (i *  20) + 9;})
       .text(function(d){ return d.name; });
 
@@ -261,10 +272,8 @@ d3.csv("park_week_data.csv",function(error,data) {
       .attr("class", "lineAxis")
       .call(lineYaxis)
       .append("text")
-      .attr("transform", "rotate(-90)")
       .attr("class", "legendText")
-      .attr("y", 6)
-      .attr("dy", ".71em")
+      .attr("x", 70)
       .style("text-anchor", "end")
       .text("Posts per Day");
 

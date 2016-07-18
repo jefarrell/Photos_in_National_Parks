@@ -5,7 +5,6 @@
   Bar Chart
 
 */
-
 var canvasWidth = 430,
     canvasHeight = 350,
     otherMargins = canvasWidth * 0.1,
@@ -40,7 +39,6 @@ var yAxis = d3.svg.axis()
 
 
 d3.csv("photocount.csv").get(function (error, data) {
-
   var keys = d3.keys(data[0]);
   var namesTitle = keys[0];
   var valuesTitle = keys[1];

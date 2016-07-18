@@ -23,6 +23,25 @@ $(window).resize(function() {
     $("#map").height($(window).height()).width($(window).width());
 });
 
+var clicked = false;
+enlarger = function() {
+  var overDiv = document.createElement('div');
+  overDiv.id = "overlayDiv";
+  document.getElementById("mapUI").appendChild(overDiv);
+  if (!clicked) {
+    var popup = document.getElementsByClassName("leaflet-popup")[0];
+    popup.style.visibility="hidden";
+    var el = document.getElementById("popupPic").src;
+    var newImg = document.createElement('IMG')
+    newImg.id="newImg";
+    newImg.src=el;
+    document.getElementById("mapUI").appendChild(newImg)
+    clicked = true;
+  } else {
+    //el.style.width = "250px"
+    clicked = false;
+  }
+}
 
 // Make a status spinner for use when loading data
 var opts = {
@@ -135,8 +154,7 @@ var Map = React.createClass({
                 '<span class="popup" id="popupUser"><a href="http://www.instagram.com/' + 
                 feature.properties.user+'" target="_blank" >@' + feature.properties.user + 
                 '</a></span> <br />'
-              +   '<span class="popup">' + postDate +'</span>' ;
-
+              +   '<span class="popup">' + postDate +'</span> <button id="testb" onClick="enlarger()">Click</button>';
     layer.bindPopup(popup);
   },
   

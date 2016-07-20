@@ -1,6 +1,6 @@
 # Visit [Photos in the National Parks](http://photosinthenationalparks.com)  
-*A web project exploring visitor trends and photography in the National Parks.*  
-*Created in honor of the National Park Service 2016 Centennial.*
+###### *A web project exploring visitor trends and photography in the National Parks.*  
+###### *Created in honor of the National Park Service 2016 Centennial.*
 
 * * * 
 The National Parks attract 300+ million visitors per year.  While we know what parks they go to, visitor locations inside the parks are tougher to know.  One way to see that is through photography and social media.  
